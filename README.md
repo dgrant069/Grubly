@@ -11,8 +11,8 @@ As a consumer I want to be able to check if my favorite restaurant has my prefer
 As a signed-in consumer I want to be able to place an order so that I can call dibs before anybody else can (Create, Read abilities on orders).
 
 As a signed-in consumer I want to be able to receive an alert in case the restaurant wants to convey any information so that I don't have to actively look for that (or even know that there was something to check on in the first place).
-  - As a signed-in consumer I want to be able to follow a restaurant so that I can keep up to date.
 
+As a signed-in consumer I want to be able to follow a restaurant so that I can keep up to date.
 
 As a signed-in consumer I want to be able to add favorite restaurants so that I can pull them up quickly.
 

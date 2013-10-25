@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Grubly::Application.config.secret_key_base = '7c2c8c2797249b05667ad145a86ccffe6dc5a2bfa6cf50fa952c855cd81f5a027d7ae1259af837404fea7e1bf602f8575b0f9644df7284470f1f5bce52cc6526'
+Grubly::Application.config.secret_key_base = ENV['RAILS_SECRET_TOKEN']

@@ -12,6 +12,10 @@ gem 'pry-rails'
 
 gem 'figaro'
 
+gem 'bootstrap-sass-rails'
+
+gem 'devise'
+
 group :development, :test do
   gem "minitest-rails"
   gem "faker"
@@ -26,12 +30,8 @@ end
 
 gem 'rails', '4.0.0'
 
-gem 'devise'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'bootstrap-sass-rails'
 
 group :production do
   gem 'rails_12factor'

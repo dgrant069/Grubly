@@ -7,6 +7,7 @@ box: wercker/ruby
 #   - wercker/postgresql
 # See more about services on our devcenter:
 # http://devcenter.wercker.com/articles/services/
+box: wercker/ubuntu12.04-ruby2.0.0
 build:
     # The steps that will be executed on build
     steps:

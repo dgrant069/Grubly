@@ -2,9 +2,7 @@ require "test_helper"
 
 feature "users can sign in" do
   scenario "a normal visitor can sign in if they have an account" do
-  puts "NO, I WILL NOT SAY Hello Dylan"
-
-    # Given a user already has an account
+    # Given a user already has an account here
 
     # When they try to sign in
     visit root_path

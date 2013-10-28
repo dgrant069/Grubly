@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #$ cat config/database.yml
->>>>>>> 0dbdfe7603f326c61e2f30962686cc195706fc3d
 # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:

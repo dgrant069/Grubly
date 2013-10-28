@@ -4,6 +4,7 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/rails/capybara"
 require "minitest/focus"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
   fixtures :all
@@ -20,3 +21,5 @@ def sign_in_twitter_user
   Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
   OmniAuth.config.add_mock(:twitter, { uid: '12345', info: { nickname: 'test_twitter_user'},})
 end
+
+Turn.config.format = :outline

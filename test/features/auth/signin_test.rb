@@ -38,12 +38,10 @@ feature "users can sign in" do
 
     # When they use it to sign in to Grubly
     visit root_path
-    click_on "Sign In"
-    click_on "Sign in with Twitter"
     sign_in_twitter_user
+    click_on "Login with Twitter"
 
     # Then it will be successful
-    visit root_path
     page.text.must_include "Sign Out"
 
   end

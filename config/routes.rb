@@ -1,6 +1,10 @@
 Grubly::Application.routes.draw do
-
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+  resources :restaurants do
+    resources :items
+  end
+
   root :to => 'home#index'
 
 

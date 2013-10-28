@@ -21,6 +21,7 @@ gem 'turbolinks'
 group :development, :test do
   gem "minitest-rails"
   gem "faker"
+  gem "sqlite3"
   gem "launchy"
   gem "turn"
 end
@@ -31,11 +32,11 @@ group :test do
 end
 
 gem 'rails', '4.0.0'
-gem 'pg'
+
 
 group :production do
   gem 'rails_12factor'
-
+  gem 'pg'
 end
 
 # Gems used only for assets and not required

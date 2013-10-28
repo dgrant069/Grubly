@@ -1,0 +1,23 @@
+normal_user1:
+  email: example1@example.com
+  username: Example User
+  role: normal
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+normal_user2:
+  email: example2@example.com
+  username: Example User2
+  role: normal
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+restaurant_owner1:
+  email: owner1@example.com
+  username: Restaurant Owner
+  role: owner
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+restaurant_owner2:
+  email: owner2@example.com
+  username: Restaurant Owner2
+  role: owner
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>

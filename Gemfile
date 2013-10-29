@@ -1,21 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'minitest-rails'
-
 gem 'simplecov', :require => false, :group => :test
-
 gem 'pundit'
-
 gem 'omniauth-twitter'
-
 gem 'pry-rails'
-
 gem 'figaro'
-
 gem 'bootstrap-sass-rails'
-
 gem 'devise'
-
 gem 'turbolinks'
 
 group :development, :test do
@@ -32,7 +24,6 @@ group :test do
 end
 
 gem 'rails', '4.0.0'
-
 
 group :production do
   gem 'rails_12factor'

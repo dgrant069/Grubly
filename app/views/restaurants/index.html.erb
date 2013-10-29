@@ -16,8 +16,8 @@
 
   <tbody>
     <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
+      <tr id="<%= dom_id(restaurant) %>">
+        <td ><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.category %></td>
         <td><%= restaurant.phone_number %></td>

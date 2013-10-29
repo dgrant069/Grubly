@@ -6,13 +6,11 @@ feature "users can sign in" do
 
     # When they try to sign in
     visit root_path
-    click_on "Sign In"
-    fill_in "Email", with: users(:normal_user1).email
-    fill_in "Password", with: "password"
-    click_on "Sign in"
+    sign_in_visitor
 
     # Then it will be successful
     visit root_path
+    assert users(:normal_user1).role != "owner"
     page.text.must_include "Sign Out"
 
   end
@@ -22,13 +20,11 @@ feature "users can sign in" do
 
     # When they try to sign in
     visit root_path
-    click_on "Sign In"
-    fill_in "Email", with: users(:restaurant_owner1).email
-    fill_in "Password", with: "password"
-    click_on "Sign in"
+    sign_in_restaurant_owner
 
     # Then it will be successful
     visit root_path
+    assert users(:restaurant_owner1).role == "owner"
     page.text.must_include "Sign Out"
 
   end

@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029162019) do
+ActiveRecord::Schema.define(version: 20131029164253) do
 
   create_table "items", force: true do |t|
     t.string   "dish_name"
-    t.decimal  "price",         precision: 10, scale: 2
     t.string   "description"
     t.string   "subcategory"
     t.integer  "inventory"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "restaurant_id"
+    t.integer  "dollars"
+    t.integer  "cents"
   end
 
   create_table "restaurants", force: true do |t|

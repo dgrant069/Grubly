@@ -1,27 +1,31 @@
 dish1:
   dish_name: Girl scout cookies
-  price: 3.50
+  dollars: 3
+  cents: 99
   description: god damn loch ness monster
   subcategory: appetizer
   inventory: 10
 
 dish2:
   dish_name: Anchovie pizza
-  price: 15.00
+  dollars: 50
+  cents: 99
   description: cowabunga
   subcategory: dinner
   inventory: 7
 
 dish3:
   dish_name: Steak
-  price: 25.00
+  dollars: 0
+  cents: 49
   description: With a red wine reduction
   subcategory: dinner
   inventory: 13
 
 dish4:
   dish_name: Pliney the elder
-  price: 4.25
+  dollars: 999
+  cents: 1
   description: Rare Beer
   subcategory: Drinks
   inventory: 1

@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @item.restaurant_id = @restaurant.id
 
     if @item.save
-      redirect_to @restaurant, notice: 'Item was successfully created.'
+      redirect_to restaurant_items_url, notice: 'Item was successfully created.'
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      redirect_to @restaurant, notice: 'Item was successfully updated.'
+      redirect_to restaurant_items_url, notice: 'Item was successfully updated.'
     else
       render action: 'edit'
     end

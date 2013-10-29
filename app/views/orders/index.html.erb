@@ -15,12 +15,13 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.dish_name %></td>
+        <td><%= @restaurant.items.find_by_id(order.item_id).dish_name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.note %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.user.username %></td>
+        <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %></td>
+        <td><%= link_to 'Edit', edit_restaurant_order_path(@restaurant, order) %></td>
+        <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_restaurant_order_path %>

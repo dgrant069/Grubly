@@ -3,25 +3,25 @@ dish1:
   price: 3.50
   description: god damn loch ness monster
   subcategory: appetizer
-  inventory:10
+  inventory: 10
 
 dish2:
   dish_name: Anchovie pizza
   price: 15.00
   description: cowabunga
   subcategory: dinner
-  inventory:7
+  inventory: 7
 
 dish3:
   dish_name: Steak
   price: 25.00
   description: With a red wine reduction
   subcategory: dinner
-  inventory:13
+  inventory: 13
 
 dish4:
   dish_name: Pliney the elder
   price: 4.25
   description: Rare Beer
   subcategory: Drinks
-  inventory:1
+  inventory: 1

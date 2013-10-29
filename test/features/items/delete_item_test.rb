@@ -8,7 +8,7 @@ feature "Restaurants can only delete their menu items" do
     @dish2 = items(:dish2).id
 
     # Given I have a existing item
-    login_owner
+    sign_in_restaurant_owner
     visit restaurant_items_path
 
     # When I click the delete link

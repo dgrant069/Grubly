@@ -5,7 +5,7 @@ feature "Menu Item Creation" do
   scenario "Restaurant: When signed in, I can submit form data to create a menu item" do
 
     # Given that I'm signed in and have complete form data
-    login_owner
+    sign_in_restaurant_owner
     visit restaurant_items_path
     click_on 'New Item'
     fill_in 'Dish Name', with: items(:dish1).dish_name

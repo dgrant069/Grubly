@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
+  #has_many :restaurants, :through => :orders
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
 
-  #has_many :restaurants, :through => :orders
-
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider

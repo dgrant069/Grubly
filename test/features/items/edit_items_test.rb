@@ -5,7 +5,7 @@ feature "ItemEdit" do
   scenario "Restaurant: When signed in, I can submit form data to edit an item" do
 
     # Given that I'm signed in and have complete form data
-    login_owner
+    sign_in_restaurant_owner
     visit restaurant_items_path(items(:dish1))
     click_on 'Edit'
     fill_in 'Description', with: "You gave him $3.50? No wonder he keeps coming back"

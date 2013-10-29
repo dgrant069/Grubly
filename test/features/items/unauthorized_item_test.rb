@@ -18,7 +18,7 @@ feature "Unauthorized users can't CRUD menu actions" do
   scenario "Consumer: I can't see CRUD actions" do
 
     # Given that I'm an Consumer
-    login_consumer
+    sign_in_visitor
 
     # When I visit a restaurants page
     visit restaurant_items_path
@@ -43,7 +43,7 @@ feature "Unauthorized users can't CRUD menu actions" do
   scenario "Consumer: I can't hack around to the CRUD" do
 
     # Given I'm signed in as a consumer
-    login_consumer
+    sign_in_visitor
 
     # When I try to visit CRUD actions
     visit edit_restaurant_item(items(:dish1))
@@ -56,7 +56,7 @@ feature "Unauthorized users can't CRUD menu actions" do
     scenario "Restaurants: I can't see other Restaurants CRUD actions" do
 
     # Given that I'm Restaurant 1
-    login_owner
+    sign_in_restaurant_owner
 
     # When I visit Restaurant 2's page
     visit restaurant_items_path
@@ -70,7 +70,7 @@ feature "Unauthorized users can't CRUD menu actions" do
     scenario "Restaurants: I can't hack around to the CRUD of another Restaurant" do
 
     # Given I'm signed in as a Restaurant
-    login_owner
+    sign_in_restaurant_owner
 
     # When I click edit and submit form data
     visit restaurant_items_path(items(:dish3))

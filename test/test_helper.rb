@@ -15,6 +15,37 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
 end
 
+def sign_in_restaurant_owner
+  visit new_user_session_path
+  fill_in "Email", with: users(:restaurant_owner1).email
+  fill_in "Password", with: "password"
+  click_on "Sign in"
+end
+
+def sign_in_admin
+  visit new_user_session_path
+  fill_in "Email", with: users(:admin).email
+  fill_in "Password", with: "password"
+  click_on "Sign in"
+end
+
+def sign_in_visitor
+  visit new_user_session_path
+  fill_in "Email", with: users(:normal_user1).email
+  fill_in "Password", with: "password"
+  click_on "Sign in"
+end
+
+def create_restaurant
+  visit new_restaurant_path
+  fill_in "Name", with: "Whatever"
+  fill_in "Address", with: "911 Help Me Street, Seattle, WA, 98203"
+  fill_in "Category", with: "Spicy"
+  fill_in "Phone number", with: "206-555-0000"
+  fill_in "Website", with: "www.imdefinitelyonfire.com"
+  click_on "Create Restaurant"
+end
+
 def sign_in_twitter_user
   OmniAuth.config.test_mode = true
   Capybara.current_session.driver.request.env['devise.mapping'] = Devise.mappings[:user]

@@ -1,0 +1,15 @@
+restaurant1:
+  name: Denny's is Terrible
+  address: "54321 E. Nowhere Rd., Seattle, WA, 98000"
+  category: Breakfast
+  phone_number: 206-555-5555
+  website: www.example.com
+  #owner: Restaurant Owner
+
+restaurant2:
+  name: IHOP is Even Worse
+  address: "654321 W. Somewhere Ave., Seattle, WA, 98001"
+  category: Mexican
+  phone_number: 206-555-5010
+  website: www.example2.com
+  #owner: Restaurant Owner2

@@ -45,3 +45,8 @@ git merge BranchName
 git status (if conflict)
 git add (after fixed files in sublime)
 git commit, push like normal
+
+
+Things to talk about:
+-Have to create an "owner" field for restaurants, migrate the DB
+  -We don't necessarily need a has_many association, just set the owner field to have to match the username in order to be able to do any CRUD actions for it

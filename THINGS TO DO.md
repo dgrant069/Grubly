@@ -9,7 +9,7 @@ DONE -Turn(?) for prettier tests (optional)
 Models/Controllers:
 DONE -User, must run the devise model setup, then alter the migration to add our attributes
 
--Items (for Menu view)
+-Items (for Menu view) (DONE)
   -Dish name - Validate uniqueness, presence
   -Price - Validate presence
   -Description (text field)
@@ -21,7 +21,7 @@ DONE -User, must run the devise model setup, then alter the migration to add our
   -Quantity(number field)
   -Notes from customer (text field)
 
--Restaurant
+-Restaurant (DONE)
   -name
   -address
   -category (food)

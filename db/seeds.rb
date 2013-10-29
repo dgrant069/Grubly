@@ -19,3 +19,7 @@ Restaurant.create(:name => "Metropolitan Grill", :address => "700 Stewart St, Se
 
 Restaurant.create(:name => "The Triple Door", :address => "315 James St, Seattle, WA 98000",
   :category => "Thai", :phone_number => "206-555-6464", :website => "www.thetripledoor.com")
+
+Item.create(:dish_name => "Steak", :inventory => 100, :restaurant_id => 1, :dollars => 9, :cents => 99)
+
+Item.create(:dish_name => "Fish and Chips", :inventory => 50, :restaurant_id => 1, :dollars => 15, :cents => 49)

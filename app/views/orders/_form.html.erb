@@ -1,4 +1,4 @@
-<%= form_for [@restaurant, @order] do |f| %>
+<%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :dish_name %>
-    <%= f.collection_select :item_id, @restaurant.items.order(:dish_name), :id, :dish_name %>
+    <%= f.collection_select :item_to_be_added, @restaurant.items, :id, :dish_name %>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>

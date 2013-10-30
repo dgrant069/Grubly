@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :restaurants, :through => :orders
-  has_many :orders, foreign_key: "user_id"
+  has_many :restaurants
+  has_many :orders
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable

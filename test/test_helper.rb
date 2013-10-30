@@ -29,7 +29,7 @@ def sign_in_admin
   click_on "Sign in"
 end
 
-def sign_in_visitor
+def sign_in_consumer
   visit new_user_session_path
   fill_in "Email", with: users(:normal_user1).email
   fill_in "Password", with: "password"

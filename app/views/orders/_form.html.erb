@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :dish_name %>
-    <%= f.collection_select :item_id, Item.order(:dish_name), :id, :dish_name %>
+    <%= f.collection_select :item_id, @restaurant.items.order(:dish_name), :id, :dish_name %>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>

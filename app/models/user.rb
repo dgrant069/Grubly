@@ -1,11 +1,6 @@
 class User < ActiveRecord::Base
   has_many :restaurants
   has_many :orders
-<<<<<<< HEAD
-
-=======
-  has_many :past_orders
->>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable

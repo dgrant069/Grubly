@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :load_restaurant
-  before_filter :load_user
+  before_filter :load_parent
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -52,11 +51,9 @@ class OrdersController < ApplicationController
   end
 
   private
-    def load_user
-      @user = User.find(params[:user_id])
-    end
-    def load_restaurant
+    def load_parent
       @restaurant = Restaurant.find(params[:restaurant_id])
+      @user = current_user
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -65,6 +62,7 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:item_id, :quantity, :note, :restaurant_id, :user_id, :user)
+      params.require(:order).permit(:item_id, :quantity, :note, :restaurant_id,
+        :user_id, :user, :item_to_be_added)
     end
 end

@@ -14,6 +14,7 @@
 
   <tbody>
     <% @orders.each do |order| %>
+      <% if (order.user == current_user) || @restaurant.owner == current_user.id %>
       <tr>
         <td><%= @restaurant.items.find_by_id(order.item_id).dish_name %></td>
         <td><%= order.quantity %></td>
@@ -23,6 +24,7 @@
         <td><%= link_to 'Edit', edit_restaurant_order_path(@restaurant, order) %></td>
         <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

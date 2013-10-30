@@ -64,7 +64,7 @@
  <br>
 
 <% if current_user %>
-  <br><br><strong><%= link_to 'Place Order', new_order_path({restaurant_id: @restaurant.id}) %></strong><br><br>
+  <br><br><strong><%= button_to 'Place Order', new_restaurant_order_path(@restaurant) %></strong><br><br>
 <% end %>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |

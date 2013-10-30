@@ -5,10 +5,10 @@ feature "A consuemr tries to place orders" do
     # Given a consumer is signed in and visits the restaurant show page
     sign_in_consumer
     visit restaurant_path(restaurants(:restaurant1).id)
-    page.text.must_include "Denny's is Terrible"
 
     # When they click create order
     click_on "Place Order"
+    save_and_open_page
 
     # Then consumer should see
 

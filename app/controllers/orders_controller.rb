@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
-  before_filter :load_parent
+  before_filter :load_parent, except: [:create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   def index
-    @orders_restaurant = @restaurant.orders.all
-    @orders_user = @user.orders.all
+    @orders = @restaurant.orders.all
+    #@orders_user = @user.orders.all
   end
 
   # GET /orders/1
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @orders_restaurant = @restaurant.orders.new
-    @orders_user = @ruser.orders.new
+    @orders_user = @user.orders.new
   end
 
   # GET /orders/1/edit
@@ -25,8 +25,6 @@ class OrdersController < ApplicationController
   # POST /orders
   def create
     @order = @restaurant.orders.new(order_params)
-    @order.restaurant_id = @restaurant.id
-    @order.user = current_user
 
     if @order.save
       redirect_to restaurant_orders_url, notice: 'Order was successfully created.'
@@ -52,7 +50,7 @@ class OrdersController < ApplicationController
 
   private
     def load_parent
-      @restaurant = Restaurant.find(params[:restaurant_id])
+      @restaurant = Restaurant.find(request.path.split('/')[2].to_i)
       @user = current_user
     end
     # Use callbacks to share common setup or constraints between actions.

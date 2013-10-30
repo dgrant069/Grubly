@@ -27,3 +27,5 @@ Item.create(:dish_name => "Steak", :inventory => 100, :restaurant_id => 1, :doll
 Item.create(:dish_name => "Fish and Chips", :inventory => 50, :restaurant_id => 1, :dollars => 15, :cents => 49)
 
 Item.create(:dish_name => "Halibut", :inventory => 30, :restaurant_id => 1, :dollars => 49, :cents => 49)
+
+Order.create(:restaurant_id => 1, :user_id => 1, :item_id => 1, :quantity => 3)

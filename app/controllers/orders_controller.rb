@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :load_restaurant
+  before_filter :load_parent
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -49,8 +49,9 @@ class OrdersController < ApplicationController
   end
 
   private
-    def load_restaurant
+    def load_parent
       @restaurant = Restaurant.find(params[:restaurant_id])
+      @user = current_user
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order

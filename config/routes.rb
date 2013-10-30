@@ -6,12 +6,13 @@ Grubly::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :users do
-    resources :past_orders
+    resources :orders
   end
 
   resources :orders
 
   resources :restaurants do
+    resources :orders
     resources :items
   end
 

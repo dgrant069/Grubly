@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131029235759) do
+=======
+ActiveRecord::Schema.define(version: 20131030163948) do
+>>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
 
   create_table "items", force: true do |t|
     t.string   "dish_name"
@@ -25,7 +29,11 @@ ActiveRecord::Schema.define(version: 20131029235759) do
     t.integer  "cents"
   end
 
+<<<<<<< HEAD
   create_table "items_ordereds", force: true do |t|
+=======
+  create_table "ordered_items", force: true do |t|
+>>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
     t.integer  "order_id"
     t.integer  "item_id"
     t.datetime "created_at"
@@ -39,6 +47,19 @@ ActiveRecord::Schema.define(version: 20131029235759) do
     t.datetime "updated_at"
     t.integer  "restaurant_id"
     t.integer  "user_id"
+<<<<<<< HEAD
+=======
+  end
+
+  create_table "past_orders", force: true do |t|
+    t.integer  "quantity"
+    t.string   "note"
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
   end
 
   create_table "restaurants", force: true do |t|
@@ -49,6 +70,10 @@ ActiveRecord::Schema.define(version: 20131029235759) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
+    t.integer  "owner"
+>>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
     t.integer  "user_id"
   end
 

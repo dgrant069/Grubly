@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-<%= @restaurant.items.each do |item| %>
-  <p><%= item.dish_name %></p>
-  <%= f.hidden_field :item_id, :value => item.id %>
+  <div class="field">
+    <%= f.label :dish_name %>
+    <%= f.collection_select :item_id, @restaurant.items.order(:dish_name), :id, :dish_name %>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
@@ -25,5 +25,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
 <% end %>

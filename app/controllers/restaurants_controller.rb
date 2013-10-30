@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner = current_user
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
@@ -54,6 +55,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :category, :phone_number, :website)
+      params.require(:restaurant).permit(:name, :address, :category, :phone_number, :website, :owner)
     end
 end

@@ -1,0 +1,28 @@
+<h1>Listing past_orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant:</th>
+      <th>Item:</th>
+      <th>Quantity:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @past_orders.each do |past_order| %>
+    <% @restaurant = Restaurant.find_by_id(past_order.restaurant_id) %>
+      <tr>
+        <% if @restaurant == nil %>
+          <td>RESTAURANT IS OUT OF BUSINESS</td>
+        <% else %>
+          <td><%= @restaurant.name %></td>
+          <td><%= @restaurant.items.find_by_id(past_order.item_id).dish_name %></td>
+          <td><%= past_order.quantity %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

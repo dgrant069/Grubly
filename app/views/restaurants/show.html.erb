@@ -25,5 +25,48 @@
   <%= @restaurant.website %>
 </p>
 
+
+<table>
+   <thead>
+     <tr>
+       <th>Dish name</th>
+       <th>Price</th>
+       <th>Description</th>
+       <th>Subcategory</th>
+       <th>Inventory</th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <% @items.each do |item| %>
+       <tr>
+         <td><%= item.dish_name %></td>
+         <td><%= "#{item.dollars}.#{item.cents}" %></td>
+         <td><%= item.description %></td>
+         <td><%= item.subcategory %></td>
+         <td><%= item.inventory %></td>
+         <td><%= link_to 'Show', restaurant_item_path(@restaurant, item) %></td>
+         <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
+         <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+ <br>
+
+ <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
+ <br>
+ <br>
+
+ <br>
+
+<% if current_user %>
+  <br><br><strong><%= link_to 'Place Order', new_restaurant_order_path(@restaurant) %></strong><br><br>
+<% end %>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

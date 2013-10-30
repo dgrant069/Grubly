@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :load_parent, except: [:create]
+  before_filter :load_parent, except: [:create, :new]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @orders_restaurant = @restaurant.orders.new
-    @orders_user = @user.orders.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @order = @restaurant.orders.new
   end
 
   # GET /orders/1/edit
@@ -24,9 +24,11 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @order = @restaurant.orders.new(order_params)
 
     if @order.save
+      current_user.orders << @order
       redirect_to restaurant_orders_url, notice: 'Order was successfully created.'
     else
       render action: 'new'

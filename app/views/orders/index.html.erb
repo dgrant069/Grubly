@@ -13,9 +13,12 @@
   </thead>
 
   <tbody>
+
+<!-- DYLAN here we need an if statement that distinguishes if restaurant or user is signed in
+      and displays the below iteration based on it -->
     <% @orders.each do |order| %>
       <tr>
-        <td><%= @restaurant.items.find_by_id(order.item_id).dish_name %></td>
+        <td><%= @order_restaurant.items.dish_name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.note %></td>
         <td><%= order.user.username %></td>

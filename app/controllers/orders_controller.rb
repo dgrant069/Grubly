@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
   before_filter :load_restaurant
+  before_filter :load_user
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   def index
-    @orders = @restaurant.orders.all
+    @orders_restaurant = @restaurant.orders.all
+    @orders_user = @user.orders.all
   end
 
   # GET /orders/1
@@ -13,7 +15,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = @restaurant.orders.new
+    @orders_restaurant = @restaurant.orders.new
+    @orders_user = @ruser.orders.new
   end
 
   # GET /orders/1/edit
@@ -36,7 +39,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   def update
     if @order.update(order_params)
-      redirect_to restaurant_orders_url, notice: 'Order was successfully updated.'
+      redirect_to orders_url, notice: 'Order was successfully updated.'
     else
       render action: 'edit'
     end
@@ -49,6 +52,9 @@ class OrdersController < ApplicationController
   end
 
   private
+    def load_user
+      @user = User.find(params[:user_id])
+    end
     def load_restaurant
       @restaurant = Restaurant.find(params[:restaurant_id])
     end

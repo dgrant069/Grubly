@@ -4,7 +4,6 @@ gem 'minitest-rails'
 gem 'simplecov', :require => false, :group => :test
 gem 'pundit'
 gem 'omniauth-twitter'
-gem 'pry-rails'
 gem 'figaro'
 gem 'bootstrap-sass-rails'
 gem 'devise'
@@ -12,6 +11,7 @@ gem 'turbolinks'
 
 group :development, :test do
   gem "minitest-rails"
+  gem 'pry-rails'
   gem "faker"
   gem "sqlite3"
   gem "launchy"

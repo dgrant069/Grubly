@@ -1,13 +1,5 @@
 Grubly::Application.routes.draw do
 
-<<<<<<< HEAD
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-
-  resources :items_ordereds
-  resources :users
-  resources :orders
-=======
-
   resources :ordered_items
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
@@ -15,7 +7,6 @@ Grubly::Application.routes.draw do
   resources :users do
     resources :orders
   end
->>>>>>> f5d57e93cfaee9f09d46ebffc4f8c6bade9cffc7
 
   resources :orders
 

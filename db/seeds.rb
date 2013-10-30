@@ -23,3 +23,5 @@ Restaurant.create(:name => "The Triple Door", :address => "315 James St, Seattle
 Item.create(:dish_name => "Steak", :inventory => 100, :restaurant_id => 1, :dollars => 9, :cents => 99)
 
 Item.create(:dish_name => "Fish and Chips", :inventory => 50, :restaurant_id => 1, :dollars => 15, :cents => 49)
+
+Item.create(:dish_name => "Halibut", :inventory => 30, :restaurant_id => 1, :dollars => 49, :cents => 49)

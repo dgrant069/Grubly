@@ -5,8 +5,8 @@
     <tr>
       <th>Dish name</th>
       <th>Quantity</th>
-      <th>Note</th>
-      <th></th>
+      <th>For:</th>
+      <th>Notes</th>
       <th></th>
       <th></th>
     </tr>
@@ -17,8 +17,8 @@
       <tr>
         <td><%= @restaurant.items.find_by_id(order.item_id).dish_name %></td>
         <td><%= order.quantity %></td>
-        <td><%= order.note %></td>
         <td><%= order.user.username %></td>
+        <td><%= order.note %></td>
         <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %></td>
         <td><%= link_to 'Edit', edit_restaurant_order_path(@restaurant, order) %></td>
         <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>

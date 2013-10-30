@@ -8,9 +8,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
-    @restaurant = Restaurant.find(params[:id])
     @items = @restaurant.items
-    @item = Item.new
   end
 
   # GET /restaurants/new

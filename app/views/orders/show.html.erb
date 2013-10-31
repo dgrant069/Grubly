@@ -26,7 +26,7 @@
 
 <!-- DYLAN - here we need to use the user.order.items_ordered.items -->
   <tbody>
-    <% @items.each do |item| %>
+    <% @order.restaurant.items.each do |item| %>
       <tr>
         <td><%= item.dish_name %></td>
         <td><%= "#{item.dollars}.#{item.cents}" %></td>

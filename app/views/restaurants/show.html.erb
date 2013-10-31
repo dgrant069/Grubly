@@ -30,7 +30,7 @@
   <strong><%= link_to 'Order History', restaurant_orders_path(@restaurant) %></strong><br><br>
 <% end %>
 
-<% if policy(@restaurant).update? %>
+<% if current_user && policy(@restaurant).update? %>
   <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <% end %>
 <%= link_to 'Back', restaurants_path %>

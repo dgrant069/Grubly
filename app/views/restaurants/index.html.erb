@@ -23,10 +23,10 @@
         <td><%= restaurant.phone_number %></td>
         <td><%= restaurant.website %></td>
         <td><%= link_to 'Details', restaurant %></td>
-        <% if policy(restaurant).update? %>
+        <% if current_user && policy(restaurant).update? %>
           <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
         <% end %>
-        <% if policy(restaurant).destroy? %>
+        <% if current_user && policy(restaurant).destroy? %>
           <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
@@ -36,6 +36,6 @@
 
 <br>
 
-<% if policy(Restaurant).create? %>
+<% if current_user && policy(Restaurant).create? %>
   <%= link_to 'New Restaurant', new_restaurant_path %>
 <% end %>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :load_parent, except: [:create, :new]
+  before_filter :load_restaurant, except: [:show, :create, :new]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -37,8 +37,11 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @order = @restaurant.orders.find(order_params)
+
     if @order.update(order_params)
-      redirect_to orders_url, notice: 'Order was successfully updated.'
+      redirect_to restaurant_orders_url, notice: 'Order was successfully updated.'
     else
       render action: 'edit'
     end
@@ -51,9 +54,9 @@ class OrdersController < ApplicationController
   end
 
   private
-    def load_parent
-      @restaurant = Restaurant.find(request.path.split('/')[2].to_i)
-      @user = current_user
+    def load_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      #@restaurant = Restaurant.find(request.path.split('/')[2].to_i)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order

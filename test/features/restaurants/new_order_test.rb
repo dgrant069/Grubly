@@ -16,7 +16,6 @@ feature "A consumer tries to place orders" do
     click_on "Create Order"
     # Then consumer should see a confirmation message
     page.must_have_content "Order was successfully created"
-
   end
 
   scenario "The user adds another order" do

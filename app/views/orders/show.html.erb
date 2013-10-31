@@ -33,6 +33,8 @@
         <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
         <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
         <td><%= item.quantity %></td>
+        <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %>
+        <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %>
       </tr>
     <% end %>
   </tbody>
@@ -40,6 +42,6 @@
 
 <br>
 
-<%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
+<%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
+<%= link_to 'Back', restaurant_orders_path %>

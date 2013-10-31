@@ -12,13 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :dish_name %>
-    <%= f.collection_select :item_to_be_added, @restaurant.items, :id, :dish_name %>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
-  </div>
-  <div class="field">
     <%= f.label :note %><br>
     <%= f.text_field :note %>
   </div>

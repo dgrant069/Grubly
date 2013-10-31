@@ -16,6 +16,27 @@ def create
     end
 end
 
+def edit
+  @ordered_item = @order.ordered_items.find(params[:id])
+end
+
+def update
+  @ordered_item = @order.ordered_items.find(params[:id])
+
+  if @ordered_item.update(ordered_item_params)
+    redirect_to restaurant_orders_path(@restaurant, @order)
+  else
+    render action: 'edit'
+  end
+end
+
+def destroy
+  @ordered_item = @order.ordered_items.find(params[:id])
+  @ordered_item.destroy
+
+  redirect_to restaurant_orders_path(@restaurant, @order)
+end
+
 private
 
   def load_order

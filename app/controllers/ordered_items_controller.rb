@@ -11,7 +11,7 @@ class OrderedItemsController < ApplicationController
     @ordered_item = @order.ordered_items.new(ordered_item_params)
 
     if @ordered_item.save
-      redirect_to restaurant_orders_url, notice: 'Order item was successfully added.'
+      redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully added.'
     else
       render action: 'new'
     end
@@ -22,7 +22,7 @@ class OrderedItemsController < ApplicationController
 
   def update
     if @ordered_item.update(ordered_item_params)
-      redirect_to restaurant_orders_path(@restaurant, @order), notice: 'Order was successfully updated.'
+      redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully updated.'
     else
       render action: 'edit'
     end
@@ -30,7 +30,7 @@ class OrderedItemsController < ApplicationController
 
   def destroy
     @ordered_item.destroy
-    redirect_to restaurant_orders_path(@restaurant, @order), notice: 'Order item was successfully destroyed.'
+    redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully destroyed.'
   end
 
 private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031152704) do
+ActiveRecord::Schema.define(version: 20131031173249) do
 
   create_table "items", force: true do |t|
     t.string   "dish_name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20131031152704) do
     t.integer  "restaurant_id"
     t.integer  "user_id"
     t.string   "note"
+    t.boolean  "finalize",      default: false
   end
 
   create_table "restaurants", force: true do |t|

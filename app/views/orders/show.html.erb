@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dish name:</strong>
-  <%= @order.dish_name %>
+  <strong>Order Number:</strong>
+  <%= @order.id %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
+  <strong>Different Items:</strong>
+  <%= @order.items.count %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>Special Notes:</strong>
   <%= @order.note %>
 </p>
 
@@ -24,9 +24,11 @@
     </tr>
   </thead>
 
+
+
 <!-- DYLAN - here we need to use the user.order.items_ordered.items -->
   <tbody>
-    <% @items.each do |item| %>
+    <% @order.ordered_items.items.each do |item| %>
       <tr>
         <td><%= item.dish_name %></td>
         <td><%= "#{item.dollars}.#{item.cents}" %></td>

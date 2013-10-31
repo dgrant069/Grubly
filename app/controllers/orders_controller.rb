@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :load_restaurant, except: [:show, :create, :new]
+  before_filter :load_restaurant, except: [:create, :new]#, :show
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders

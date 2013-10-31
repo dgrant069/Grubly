@@ -25,5 +25,7 @@
   <%= @item.inventory %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> |
-<%= link_to 'Back', restaurant_items_path %>
+<% if current_user && policy(@item).update? %>
+  <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> |
+<% end %>
+<%= link_to 'Back', new_restaurant_order_path(@restaurant) %>

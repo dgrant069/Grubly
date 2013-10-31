@@ -1,13 +1,13 @@
-PostPolicy = Struct.new(:user, :item) do
+ItemPolicy = Struct.new(:user, :item) do
   def create?
-    user.role == admin? || (user.role == "owner" && item.restaurant.owner == user.id)
+    (user.role == "admin") || (item.restaurant.owner == user.id)
   end
 
   def update?
-
+    (user.role == "admin") || (item.restaurant.owner == user.id)
   end
 
   def destroy?
-
+    (user.role == "admin") || (item.restaurant.owner == user.id)
   end
 end

@@ -7,7 +7,7 @@ feature "Unauthorized users can't CRUD menu actions" do
     # Given that I'm a vistor
 
     # When I visit a restaurants page
-    visit restaurant_items_path
+    visit restaurant_items_path(restaurants(:restaurant1))
 
     # Then I won't see Destroy link
     page.wont_have_content "New Item"
@@ -21,7 +21,7 @@ feature "Unauthorized users can't CRUD menu actions" do
     sign_in_consumer
 
     # When I visit a restaurants page
-    visit restaurant_items_path
+    visit restaurant_items_path(restaurants(:restaurant1))
 
     # Then I can't see and CRUD actions
     page.wont_have_content "New Item"

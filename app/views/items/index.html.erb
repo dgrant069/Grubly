@@ -22,9 +22,12 @@
         <td><%= item.description %></td>
         <td><%= item.subcategory %></td>
         <td><%= item.inventory %></td>
-        <td><%= link_to 'Show', restaurant_item_path(@restaurant, item) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
-        <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user && policy(item).update? %>
+          <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
+        <% end %>
+        <% if current_user && policy(item).destroy? %>
+          <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +35,6 @@
 
 <br>
 
-<%= link_to 'New Item', new_restaurant_item_path %>
+<% if current_user && policy(Item).create? %>
+  <%= link_to 'New Item', new_restaurant_item_path %>
+<% end %>

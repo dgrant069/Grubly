@@ -1,17 +1,21 @@
 RestaurantPolicy = Struct.new(:user, :restaurant) do
   def create?
-    (user.role == "admin") || (user.role == "owner")
+    user.present? && (user.role == "admin") || (user.role == "owner")
   end
 
   def item_create?
-    (user.role == "admin") || (restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (restaurant.owner == user)
+  end
+
+  def edit?
+    user.present? && (user.role == "admin") || (restaurant.owner == user)
   end
 
   def update?
-    (user.role == "admin") || (restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (restaurant.owner == user)
   end
 
   def destroy?
-    (user.role == "admin") || (restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (restaurant.owner == user)
   end
 end

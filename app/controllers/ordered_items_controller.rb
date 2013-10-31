@@ -9,6 +9,7 @@ class OrderedItemsController < ApplicationController
 
   def create
     @ordered_item = @order.ordered_items.new(ordered_item_params)
+    authorize @ordered_item
 
     if @ordered_item.save
       redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully added.'
@@ -18,9 +19,12 @@ class OrderedItemsController < ApplicationController
   end
 
   def edit
+    authorize @ordered_item
   end
 
   def update
+    authorize @ordered_item
+
     if @ordered_item.update(ordered_item_params)
       redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully updated.'
     else
@@ -29,6 +33,7 @@ class OrderedItemsController < ApplicationController
   end
 
   def destroy
+    authorize @ordered_item
     @ordered_item.destroy
     redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully destroyed.'
   end

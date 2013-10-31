@@ -34,10 +34,10 @@ feature "Unauthorized users can't CRUD menu actions" do
     # Given that I'm a vistor
 
     # When I try to visit CRUD actions
-    visit edit_restaurant_item(items(:dish1))
+    visit edit_restaurant_item_path(restaurants(:restaurant1), items(:dish1))
 
     # Then I see either a doesn't exist page or an unauthorized
-    page.must_have_content "Couldn't find Restaurant"
+    page.must_have_content "You do not have the proper permission to do this action"
   end
 
   scenario "Consumer: I can't hack around to the CRUD" do

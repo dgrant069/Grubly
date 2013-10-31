@@ -35,6 +35,6 @@
 
 <br>
 
-<% if current_user && policy(Item).create? %>
+<% if current_user && policy(@restaurant).update? %>
   <%= link_to 'New Item', new_restaurant_item_path %>
 <% end %>

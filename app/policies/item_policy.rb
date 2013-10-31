@@ -1,13 +1,17 @@
 ItemPolicy = Struct.new(:user, :item) do
   def create?
-    (user.role == "admin") || (item.restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (item.restaurant.owner == user)
+  end
+
+  def edit?
+    user.present? && (user.role == "admin") || (item.restaurant.owner == user)
   end
 
   def update?
-    (user.role == "admin") || (item.restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (item.restaurant.owner == user)
   end
 
   def destroy?
-    (user.role == "admin") || (item.restaurant.owner == user.id)
+    user.present? && (user.role == "admin") || (item.restaurant.owner == user)
   end
 end

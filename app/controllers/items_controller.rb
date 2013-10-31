@@ -18,12 +18,14 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    authorize @item
   end
 
   # POST /items
   def create
     @item = @restaurant.items.new(item_params)
     @item.restaurant_id = @restaurant.id
+    authorize @item
 
     if @item.save
       redirect_to restaurant_items_url, notice: 'Item was successfully created.'
@@ -34,6 +36,8 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1
   def update
+    authorize @item
+
     if @item.update(item_params)
       redirect_to restaurant_url, notice: 'Item was successfully updated.'
     else
@@ -43,6 +47,7 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
+    authorize @item
     @item.destroy
     redirect_to restaurant_items_url, notice: 'Item was successfully destroyed.'
   end

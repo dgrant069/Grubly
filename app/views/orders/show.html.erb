@@ -1,24 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dish name:</strong>
-  <%= @restaurant.items.find_by_id(@order.item_id).dish_name %>
+  <strong>Order Number:</strong>
+  <%= @order.id %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
+  <strong>Different Items:</strong>
+  <%= @order.items.count %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>Special Notes:</strong>
   <%= @order.note %>
 </p>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @order.created_at.in_time_zone("Pacific Time (US & Canada)") %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Dish name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_restaurant_order_path(@restaurant, @order) %> |
+
+
+<!-- DYLAN - here we need to use the user.order.items_ordered.items -->
+  <tbody>
+    <% @order.ordered_items.each do |item| %>
+      <tr>
+        <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
+        <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %>
+        <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
+<%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
 <%= link_to 'Back', restaurant_orders_path %>

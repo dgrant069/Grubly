@@ -6,7 +6,7 @@ feature "users can sign in" do
 
     # When they try to sign in
     visit root_path
-    sign_in_visitor
+    sign_in_consumer
 
     # Then it will be successful
     visit root_path

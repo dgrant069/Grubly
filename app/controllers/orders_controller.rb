@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
-  before_filter :load_restaurant
+  before_filter :load_restaurant, except: [:create, :new]#, :show
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   def index
     @orders = @restaurant.orders.all
+    #@orders_user = @user.orders.all
   end
 
   # GET /orders/1
@@ -13,7 +14,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @order = @restaurant.orders.new
+    @items = @restaurant.items
   end
 
   # GET /orders/1/edit
@@ -22,11 +25,11 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @order = @restaurant.orders.new(order_params)
-    @order.restaurant_id = @restaurant.id
-    @order.user = current_user
 
     if @order.save
+      current_user.orders << @order
       redirect_to restaurant_orders_url, notice: 'Order was successfully created.'
     else
       render action: 'new'
@@ -35,6 +38,9 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @order = @restaurant.orders.find(order_params)
+
     if @order.update(order_params)
       redirect_to restaurant_orders_url, notice: 'Order was successfully updated.'
     else
@@ -51,6 +57,7 @@ class OrdersController < ApplicationController
   private
     def load_restaurant
       @restaurant = Restaurant.find(params[:restaurant_id])
+      #@restaurant = Restaurant.find(request.path.split('/')[2].to_i)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -59,6 +66,7 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:item_id, :quantity, :note, :restaurant_id, :user_id, :user)
+      params.require(:order).permit(:item_id, :quantity, :note, :restaurant_id,
+        :user_id, :user, :item_to_be_added)
     end
 end

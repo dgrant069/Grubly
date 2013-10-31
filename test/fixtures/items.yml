@@ -5,6 +5,7 @@ dish1:
   description: god damn loch ness monster
   subcategory: appetizer
   inventory: 10
+  restaurant: restaurant1
 
 dish2:
   dish_name: Anchovie pizza
@@ -13,6 +14,7 @@ dish2:
   description: cowabunga
   subcategory: dinner
   inventory: 7
+  restaurant: restaurant1
 
 dish3:
   dish_name: Steak
@@ -21,6 +23,7 @@ dish3:
   description: With a red wine reduction
   subcategory: dinner
   inventory: 13
+  restaurant: restaurant1
 
 dish4:
   dish_name: Pliney the elder
@@ -29,3 +32,4 @@ dish4:
   description: Rare Beer
   subcategory: Drinks
   inventory: 1
+  restaurant: restaurant1

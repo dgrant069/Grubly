@@ -24,7 +24,7 @@
     </tr>
   </thead>
 
-<!-- DYLAN - here we need to use the user.order.items_ordered.items -->
+
   <tbody>
     <% @order.restaurant.items.each do |item| %>
       <tr>
@@ -36,5 +36,5 @@
 </table>
 
 <br>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_restaurant_order_path(@restaurant, @order) %> |
+<%= link_to 'Cancel', restaurant_orders_path(@restaurant) %>

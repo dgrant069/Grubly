@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
+<% flash.each do |key, value| %>
+  <div>
+    <%= value %>
+  </div>
+<% end %>
 
-<%= render 'layouts/header' %>
-<%= render 'layouts/nav' %>
+<%= render 'layouts/head' %>
+<%= render 'layouts/headernav' %>
 
 <div class="container">
 

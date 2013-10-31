@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   before_filter :load_restaurant
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -15,6 +16,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = @restaurant.orders.new
+    @items = @restaurant.items
   end
 
   # GET /orders/1/edit

@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dish name:</strong>
-  <%= @order.dish_name %>
+  <strong>Order Number:</strong>
+  <%= @order.id %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
+  <strong>Different Items:</strong>
+  <%= @order.items.count %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>Special Notes:</strong>
   <%= @order.note %>
 </p>
 
@@ -20,21 +20,25 @@
     <tr>
       <th>Dish name</th>
       <th>Price</th>
-
+      <th>Quantity</th>
     </tr>
   </thead>
 
 
   <tbody>
-    <% @order.restaurant.items.each do |item| %>
+    <% @order.ordered_items.each do |item| %>
       <tr>
-        <td><%= item.dish_name %></td>
-        <td><%= "#{item.dollars}.#{item.cents}" %></td>
+        <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
+        <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %>
+        <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'Edit', edit_restaurant_order_path(@restaurant, @order) %> |
-<%= link_to 'Cancel', restaurant_orders_path(@restaurant) %>
+<%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
+<%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
+<%= link_to 'Back', restaurant_orders_path %>

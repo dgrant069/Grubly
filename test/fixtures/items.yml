@@ -23,7 +23,7 @@ dish3:
   description: With a red wine reduction
   subcategory: dinner
   inventory: 13
-  restaurant: restaurant1
+  restaurant: restaurant2
 
 dish4:
   dish_name: Pliney the elder
@@ -32,4 +32,4 @@ dish4:
   description: Rare Beer
   subcategory: Drinks
   inventory: 1
-  restaurant: restaurant1
+  restaurant: restaurant2

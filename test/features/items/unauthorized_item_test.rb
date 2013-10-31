@@ -46,11 +46,11 @@ feature "Unauthorized users can't CRUD menu actions" do
     sign_in_consumer
 
     # When I try to visit CRUD actions
-    visit edit_restaurant_item(items(:dish1))
+    visit edit_restaurant_item_path(restaurants(:restaurant1), items(:dish1))
 
     # Then I see either a doesn't exist page or an unauthorized
     page.wont_have_content "Item was successfully updated."
-    page.must_have_content "Couldn't find Restaurant"
+    page.must_have_content "You do not have the proper permission to do this action"
   end
 
     scenario "Restaurants: I can't see other Restaurants CRUD actions" do
@@ -59,7 +59,7 @@ feature "Unauthorized users can't CRUD menu actions" do
     sign_in_restaurant_owner
 
     # When I visit Restaurant 2's page
-    visit restaurant_items_path
+    visit restaurant_items_path(restaurants(:restaurant2))
 
     # Then I won't see CRUD actions
     page.wont_have_content "New Item"
@@ -72,11 +72,11 @@ feature "Unauthorized users can't CRUD menu actions" do
     # Given I'm signed in as a Restaurant
     sign_in_restaurant_owner
 
-    # When I click edit and submit form data
-    visit restaurant_items_path(items(:dish3))
+    # When I try to hack Restaurant 2's items page
+    visit restaurant_items_path(restaurants(:restaurant2), items(:dish3))
 
-    # Then the item is updated and changes viewable
-    page.wont_have_content "Item was successfully updated."
-    page.must_have_content "Couldn't find Restaurant"
+    # Then I won't see CRUD actions
+    page.wont_have_content "Edit"
+    page.wont_have_content "Destroy"
   end
 end

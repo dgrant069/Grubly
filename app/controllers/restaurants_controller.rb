@@ -24,7 +24,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.owner = current_user
+    @restaurant.owner = current_user.id
     authorize @restaurant
 
     if @restaurant.save

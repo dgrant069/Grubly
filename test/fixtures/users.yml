@@ -9,19 +9,19 @@ normal_user2:
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 restaurant_owner1:
-  email: owner1@example.com
+  email: owner99@example.com
   username: Restaurant Owner
   role: owner
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 restaurant_owner2:
-  email: owner2@example.com
+  email: owner98@example.com
   username: Restaurant Owner2
   role: owner
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 admin:
-  email: admin@example.com
+  email: admin99@example.com
   username: admin
   role: admin
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>

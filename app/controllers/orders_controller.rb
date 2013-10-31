@@ -19,11 +19,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    authorize @order
   end
 
   # POST /orders
   def create
     @order = @restaurant.orders.new(order_params)
+    authorize @order
 
     if @order.save
       current_user.orders << @order
@@ -35,6 +37,8 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
+    authorize @order
+
     if @order.update(order_params)
       redirect_to restaurant_orders_url, notice: 'Order was successfully updated.'
     else
@@ -44,6 +48,7 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1
   def destroy
+    authorize @order
     @order.destroy
     redirect_to restaurant_orders_url, notice: 'Order was successfully destroyed.'
   end

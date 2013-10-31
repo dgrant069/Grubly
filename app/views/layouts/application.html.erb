@@ -21,6 +21,11 @@
 <br>
 <%= link_to "Restaurants", restaurants_path %><br>
 
+<% if current_user %>
+<% @user = current_user.id %>
+  <%= link_to "Past Orders", user_past_orders_path(@user) %>
+<% end %>
+
 <div class="container">
 
   <%= yield %>

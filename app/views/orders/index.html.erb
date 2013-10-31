@@ -7,7 +7,7 @@
       <th>Quantity</th>
       <th>For:</th>
       <th>Notes</th>
-      <th></th>
+      <th>Created at:</th>
       <th></th>
     </tr>
   </thead>
@@ -20,6 +20,7 @@
         <td><%= order.quantity %></td>
         <td><%= order.user.username %></td>
         <td><%= order.note %></td>
+        <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)") %></td>
         <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %></td>
         <td><%= link_to 'Edit', edit_restaurant_order_path(@restaurant, order) %></td>
         <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>

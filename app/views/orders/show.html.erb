@@ -2,7 +2,7 @@
 
 <p>
   <strong>Dish name:</strong>
-  <%= @order.dish_name %>
+  <%= @restaurant.items.find_by_id(@order.item_id).dish_name %>
 </p>
 
 <p>
@@ -15,5 +15,10 @@
   <%= @order.note %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<p>
+  <strong>Created at:</strong>
+  <%= @order.created_at.in_time_zone("Pacific Time (US & Canada)") %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_order_path(@restaurant, @order) %> |
+<%= link_to 'Back', restaurant_orders_path %>

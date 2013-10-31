@@ -1,4 +1,4 @@
-<h1>Listing restaurants</h1>
+<h1>Listing All Restaurants</h1>
 
 <table>
   <thead>
@@ -22,9 +22,13 @@
         <td><%= restaurant.category %></td>
         <td><%= restaurant.phone_number %></td>
         <td><%= restaurant.website %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Details', restaurant %></td>
+        <% if policy(restaurant).update? %>
+          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <% end %>
+        <% if policy(restaurant).destroy? %>
+          <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +36,6 @@
 
 <br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<% if policy(Restaurant).create? %>
+  <%= link_to 'New Restaurant', new_restaurant_path %>
+<% end %>

@@ -31,7 +31,7 @@
         <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
         <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
         <td><%= item.quantity %></td>
-        <% if @order.finalize? == false %>
+        <% if @order.finalize? == false || policy(@order).edit_after_final? %>
           <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %>
           <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %>
         <% end %>
@@ -44,12 +44,14 @@
 
 <% if @order.finalize? %>
   <%= "Your order has already been finalized!" %><br><br>
-<% elsif @order.ordered_items.count > 0 %>
+<% elsif (@order.ordered_items.count > 0) && policy(@order).finalize? %>
   <%= button_to 'Finalize Order', restaurant_order_path(@restaurant, @order, order: {finalize: true}), method: :put %><br>
 <% end %>
 
-<% if @order.finalize? == false %>
+<% if @order.finalize? == false  && policy(@order).show? %>
   <%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
 <% end %>
-<%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
+<% if policy(@order).update? %>
+  <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
+<% end %>
 <%= link_to 'Back', restaurant_orders_path %>

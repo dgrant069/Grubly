@@ -13,15 +13,21 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <% if (order.user == current_user) || @restaurant.owner == current_user.id %>
+      <% if policy(order).show? %>
       <tr>
         <td><%= order.id %></td>
         <td><%= order.user.username %></td>
         <td><%= order.note %></td>
         <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)") %></td>
-        <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_order_path(@restaurant, order) %></td>
+      <% if policy(order).show? %>
+        <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %> </td>
+      <% end %>
+      <% if (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>
+        <td> | <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %> | </td>
+      <% end %>
+      <% if (order.finalize? == false && policy(order).destroy?) || policy(order).edit_after_final? %>
         <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
       </tr>
       <% end %>
     <% end %>

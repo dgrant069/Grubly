@@ -15,14 +15,14 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
 end
 
-def sign_in_restaurant_owner
+def sign_in_restaurant_owner(role = "owner")
   visit new_user_session_path
   fill_in "Email", with: users(:restaurant_owner1).email
   fill_in "Password", with: "password"
   click_on "Sign in"
 end
 
-def sign_in_admin
+def sign_in_admin(role = "admin")
   visit new_user_session_path
   fill_in "Email", with: users(:admin).email
   fill_in "Password", with: "password"

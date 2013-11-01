@@ -36,7 +36,7 @@ feature "users can sign in" do
     visit root_path
     click_on "Sign In"
     sign_in_twitter_user
-    click_on "Login with Twitter"
+    first(:link, "Login with Twitter").click
 
     # Then it will be successful
     page.text.must_include "Sign Out"

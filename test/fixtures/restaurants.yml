@@ -4,7 +4,7 @@ restaurant1:
   category: Breakfast
   phone_number: 206-555-5555
   website: www.example.com
-  owner: restaurants(:restaurant_owner1).id
+  owner: restaurant_owner1
 
 restaurant2:
   name: IHOP is Even Worse
@@ -12,4 +12,4 @@ restaurant2:
   category: Mexican
   phone_number: 206-555-5010
   website: www.example2.com
-  owner: restaurants(:restaurant_owner2).id
+  owner: restaurant_owner2

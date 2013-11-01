@@ -1,9 +1,11 @@
 normal_user1:
+  id: 100
   email: example1@example.com
   username: Example User
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 normal_user2:
+  id: 101
   email: example2@example.com
   username: Example User2
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>

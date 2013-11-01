@@ -11,12 +11,6 @@
       <%= link_to 'User Management Page', users_path %>
     <% end %>
 
-    <% flash.each do |key, value| %>
-      <div>
-        <%= value %>
-      </div>
-    <% end %>
-
     <div class="row">
       <div class="large-12 columns">
         <% flash.each do |key, value| %>

@@ -1,4 +1,4 @@
-    require "test_helper"
+require "test_helper"
 
 feature "Restaurants can only delete their menu items" do
 

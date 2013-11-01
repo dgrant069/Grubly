@@ -18,7 +18,7 @@ feature "Restaurants can only delete their menu items" do
     click_link('Destroy', href: "/restaurants/#{@restaurant}/items/#{@dish2}")
 
     # Then item is destroyed and no longer seen
-    page.wont_have_content items(:dish1).title
-    page.wont_have_content items(:dish2).title
+    page.wont_have_content items(:dish1).dish_name
+    page.wont_have_content items(:dish2).dish_name
   end
 end

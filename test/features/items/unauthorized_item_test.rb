@@ -37,7 +37,8 @@ feature "Unauthorized users can't CRUD menu actions" do
     visit edit_restaurant_item_path(restaurants(:restaurant1), items(:dish1))
 
     # Then I see either a doesn't exist page or an unauthorized
-    page.must_have_content "You do not have the proper permission to do this action"
+    page.wont_have_content "Editing item"
+    page.must_have_content "Hello awesome Grubly users!" # because user got redirected to home page
   end
 
   scenario "Consumer: I can't hack around to the CRUD" do
@@ -49,8 +50,8 @@ feature "Unauthorized users can't CRUD menu actions" do
     visit edit_restaurant_item_path(restaurants(:restaurant1), items(:dish1))
 
     # Then I see either a doesn't exist page or an unauthorized
-    page.wont_have_content "Item was successfully updated."
-    page.must_have_content "You do not have the proper permission to do this action"
+    page.wont_have_content "Editing item"
+    page.must_have_content "Hello awesome Grubly users!" # user got redirected to home page
   end
 
     scenario "Restaurants: I can't see other Restaurants CRUD actions" do

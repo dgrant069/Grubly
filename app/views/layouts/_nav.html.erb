@@ -29,7 +29,7 @@
             <li class="divider"></li>
             <li><%= link_to "Restaurants", restaurants_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "My Orders" %></li>
+            <li><%= link_to "My Orders", restaurant_orders_path(@restaurant) %></li>
             <li class="divider"></li>
             <li data-dropdown="hover1" data-options="is_hover:true">
               <% if current_user %>

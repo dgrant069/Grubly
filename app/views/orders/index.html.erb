@@ -1,39 +1,47 @@
-<h1>Listing orders</h1>
+<h1>Orders for <%= "#{@restaurant.name}" %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Order Number</th>
-      <th>For</th>
-      <th>Special Notes</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <% if current_user && policy(order).show? %>
+<% if (current_user && current_user.orders.any? { |order| order.restaurant_id == @restaurant.id }) || policy(@restaurant).update? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= order.id %></td>
-        <td><%= order.user.username %></td>
-        <td><%= order.note %></td>
-        <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)") %></td>
-      <% if current_user && policy(order).show? %>
-        <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %> </td>
-      <% end %>
-      <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>
-        <td> | <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %> | </td>
-      <% end %>
-      <% if current_user && (order.finalize? == false && policy(order).destroy?) || policy(order).edit_after_final? %>
-        <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+        <th>Order Number</th>
+        <th>For</th>
+        <th>Special Notes</th>
+        <th>Finalized?</th>
+        <th></th>
       </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @orders.each do |order| %>
+        <% if current_user && policy(order).show? %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.user.username %></td>
+          <td><%= order.note %></td>
+        <% if current_user && policy(order).show? %>
+          <td><%= order.finalize? %></td>
+        <% end %>
+          <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)") %></td>
+        <% if current_user && policy(order).show? %>
+          <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %> </td>
+        <% end %>
+        <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>
+          <td> | <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %> | </td>
+        <% end %>
+        <% if current_user && (order.finalize? == false && policy(order).destroy?) || policy(order).edit_after_final? %>
+          <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif current_user.nil? %>
+<p>Please <%= link_to 'sign in', new_user_session_path %> for full site functionality!</p>
+<% else %>
+<p>It looks like you don't have any orders for this restaurant yet! Would you like to <%= link_to 'build one?', new_restaurant_order_path(@restaurant) %></p>
+<% end %>
 <br>
 
 <%= link_to 'Back to Restaurant', restaurant_path(@restaurant) %><br>

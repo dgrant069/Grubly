@@ -1,6 +1,6 @@
 OrderPolicy = Struct.new(:user, :order) do
   def show?
-    user.present? && ((user == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
+    user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 
   def create?
@@ -8,15 +8,15 @@ OrderPolicy = Struct.new(:user, :order) do
   end
 
   def edit?
-    user.present? && ((user == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
+    user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 
   def update?
-    user.present? && ((user == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
+    user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 
   def destroy?
-    user.present? && ((user == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
+    user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 
   def edit_after_final?
@@ -24,6 +24,6 @@ OrderPolicy = Struct.new(:user, :order) do
   end
 
   def finalize?
-    user.present? && ((user == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
+    user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 end

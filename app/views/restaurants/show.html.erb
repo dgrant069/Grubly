@@ -31,6 +31,7 @@
 <% end %>
 
 <% if current_user && policy(@restaurant).update? %>
+  <%= link_to 'Add Items to Menu', new_restaurant_item_path(@restaurant) %><br>
   <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <% end %>
 <%= link_to 'Back', restaurants_path %>

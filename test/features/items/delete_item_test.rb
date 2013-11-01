@@ -6,6 +6,7 @@ feature "Restaurants can only delete their menu items" do
 
     @dish1 = items(:dish1).id
     @dish2 = items(:dish2).id
+    @restaurant = restaurants(:restaurant1).id
 
     # Given I have a existing item
     sign_in_restaurant_owner
@@ -13,9 +14,8 @@ feature "Restaurants can only delete their menu items" do
 
     # When I click the delete link
     #puts "/items/#{@only}"
-    save_and_open_page
-    click_link('Destroy', href: "/items/#{@dish1}")
-    click_link('Destroy', href: "/items/#{@dish2}")
+    click_link('Destroy', href: "/restaurants/#{@restaurant}/items/#{@dish1}")
+    click_link('Destroy', href: "/restaurants/#{@restaurant}/items/#{@dish2}")
 
     # Then item is destroyed and no longer seen
     page.wont_have_content items(:dish1).title

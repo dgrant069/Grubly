@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="large-12 columns">
+
+    <!-- Navigation -->
+      <nav class="top-bar">
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <h1>
+              <%= link_to "Grubly", root_path %>
+            </h1>
+          </li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="left">
+            <li class="search">
+              <form>
+                <input type="search">
+              </form>
+            </li>
+            <li class="has-button">
+              <a class="small button" href="#">Search</a>
+            </li>
+
+          </ul>
+
+          <ul class="right">
+            <li class="divider"></li>
+            <li><%= link_to "Restaurants", restaurants_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "My Orders" %></li>
+            <li class="divider"></li>
+            <li data-dropdown="hover1" data-options="is_hover:true">
+              <% if current_user %>
+                <a href="" ><%= current_user.username %></a>
+              <% else %>
+                <%= link_to "User Actions" %>
+              <% end %>
+            </li>
+              <ul id="hover1" class="f-dropdown">
+                <% if current_user %>
+                  <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to 'Sign In', new_user_session_path %></li>
+                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                  <li><%= link_to "Login with Twitter", user_omniauth_authorize_path(:twitter) %></li>
+                <% end %>
+              </ul>
+          </ul>
+        </section>
+      </nav>
+    <!--End of Nav-->
+  </div>
+</div>

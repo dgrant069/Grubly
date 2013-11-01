@@ -17,15 +17,43 @@
       </div>
     <% end %>
 
-    <% if current_user %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %><br>
-      <%= link_to 'Sign Up', new_user_registration_path %><br>
+    <% if policy(User).index? %>
+      <%= link_to 'User Management Page', users_path %>
     <% end %>
 
-    <%= yield %>
+    <div class="row">
+      <div class="large-12 columns">
+        <% flash.each do |key, value| %>
+          <div>
+            <%= value %>
+          </div>
+        <% end %>
+
+        <%= yield %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+      <!-- Mobile Header -->
+
+      <div class="row">
+        <div class="small-12 show-for-small"><br>
+          <img src="http://placehold.it/1000x600&text=For Small Screens" />
+        </div>
+      </div>
+
+
+    <!-- End Mobile Header -->
+
+      </div>
+    </div><br>
+
+    <%= render 'layouts/footer' %>
 
     <%= javascript_include_tag "application" %>
+
   </body>
 </html>

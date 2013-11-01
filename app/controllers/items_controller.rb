@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     authorize @item
 
     if @item.update(item_params)
-      redirect_to restaurant_url, notice: 'Item was successfully updated.'
+      redirect_to restaurant_items_url, notice: 'Item was successfully updated.'
     else
       render action: 'edit'
     end

@@ -13,7 +13,6 @@ feature "ItemEdit" do
     click_on 'Update Item'
 
     # Then a new item is created and can be seen
-    page.must_have_content "Item was successfully updated."
     page.wont_have_content "monster"
     page.must_have_content "No wonder he keeps coming back"
   end

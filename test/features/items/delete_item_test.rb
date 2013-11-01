@@ -1,4 +1,4 @@
-require "test_helper"
+    require "test_helper"
 
 feature "Restaurants can only delete their menu items" do
 
@@ -9,10 +9,11 @@ feature "Restaurants can only delete their menu items" do
 
     # Given I have a existing item
     sign_in_restaurant_owner
-    visit restaurant_items_path(:restaurant_id)
+    visit restaurant_items_path(restaurants(:restaurant1))
 
     # When I click the delete link
     #puts "/items/#{@only}"
+    save_and_open_page
     click_link('Destroy', href: "/items/#{@dish1}")
     click_link('Destroy', href: "/items/#{@dish2}")
 

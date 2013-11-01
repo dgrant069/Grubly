@@ -2,7 +2,7 @@ THINGS TO DO
 
 Gems:
 DONE -Devise for user signin
--Pundit for role restrictions
+DONE -Pundit for role restrictions
 DONE -Omniauth for Twitter/Other integration
 DONE -Turn(?) for prettier tests (optional)
 
@@ -16,7 +16,7 @@ DONE -User, must run the devise model setup, then alter the migration to add our
   -Subcategory (dinner, lunch, app, etc.)
   -Inventory quantity (amount in stock)
 
--Order, placed by both types of user (normal and owner)
+-Order, placed by both types of user (normal and owner) (DONE-Mostly)
   -Dish name(checkbox form)
   -Quantity(number field)
   -Notes from customer (text field)
@@ -28,7 +28,7 @@ DONE -User, must run the devise model setup, then alter the migration to add our
   -phone_number
   -website(link)
 
-Associations:
+Associations: (DONE)
 -Item, belongs_to :restaurant
 -Order, belongs_to :user, belongs_to :restaurant
 -User, has_many :restaurants, :through => :orders

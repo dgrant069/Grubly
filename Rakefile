@@ -5,4 +5,6 @@ require File.expand_path('../config/application', __FILE__)
 
 Grubly::Application.load_tasks
 
-MiniTest::Rails::Testing.default_tasks << 'features'
+if Rails.env.test?
+  MiniTest::Rails::Testing.default_tasks << 'features'
+end

@@ -18,9 +18,26 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
 end
 
+def create_order
+  visit new_restaurant_order_path(restaurants(:restaurant1).id)
+  click_on "Create Order"
+  click_on "Show"
+  click_on "Add to Order"
+  select(items(:dish1).dish_name)
+  fill_in "Quantity", with: "2"
+  click_on "Create Ordered item"
+end
+
 def sign_in_restaurant_owner(role = "owner")
   visit new_user_session_path
   fill_in "Email", with: users(:restaurant_owner1).email
+  fill_in "Password", with: "password"
+  click_on "Sign in"
+end
+
+def sign_in_restaurant_owner2(role = "owner")
+  visit new_user_session_path
+  fill_in "Email", with: users(:restaurant_owner2).email
   fill_in "Password", with: "password"
   click_on "Sign in"
 end

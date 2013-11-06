@@ -40,6 +40,8 @@
             <td><%= button_to 'Order Completed!', restaurant_order_path(@restaurant, order, order: {completed: true}), method: :put %></td>
           <% elsif order.completed? %>
             <td>Order Filled!</td>
+          <% else %>
+            <td>Not Filled!</td>
           <% end %>
 
           <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>

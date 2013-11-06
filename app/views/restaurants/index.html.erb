@@ -8,9 +8,13 @@
       <th>Category</th>
       <th>Phone number</th>
       <th>Website</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Show</th>
+      <% if current_user && policy(Restaurant).create? %>
+        <th>Edit</th>
+      <% end %>
+      <% if current_user && policy(Restaurant).create? %>
+        <th>Destroy</th>
+      <% end %>
     </tr>
   </thead>
 

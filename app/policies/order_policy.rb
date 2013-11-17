@@ -26,4 +26,8 @@ OrderPolicy = Struct.new(:user, :order) do
   def finalize?
     user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
+
+  def order_filled?
+
+  end
 end

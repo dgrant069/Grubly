@@ -18,4 +18,8 @@ RestaurantPolicy = Struct.new(:user, :restaurant) do
   def destroy?
     user.present? && ((user.role == "admin") || (restaurant.owner == user.id))
   end
+
+  def order_filled?
+    user.present? && ((user.role == "admin") || (restaurant.owner == user.id))
+  end
 end

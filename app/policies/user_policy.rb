@@ -3,6 +3,10 @@ UserPolicy = Struct.new(:user, :record) do
     user.present? && user.role == "admin"
   end
 
+  def show?
+    user.present? && (user.role == "admin" || user.id == record.id)
+  end
+
   def edit?
     user.present? && user.role == "admin"
   end

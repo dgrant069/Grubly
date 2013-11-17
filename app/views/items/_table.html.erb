@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <th>Dish name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Subcategory</th>
+      <th>Inventory</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr id="<%= item.id %>" >
+        <td><%= item.dish_name %></td>
+        <td><%= "#{item.dollars}.#{item.cents}" %></td>
+        <td><%= item.description %></td>
+        <td><%= item.subcategory %></td>
+        <td><%= item.inventory %></td>
+        <% if current_user && policy(item).update? %>
+          <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item), id: "edit_link_#{item.id}", remote: true %></td>
+        <% end %>
+        <% if current_user && policy(item).destroy? %>
+          <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), id: "delete_link_#{item.id}", method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

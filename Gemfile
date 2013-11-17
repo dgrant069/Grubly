@@ -7,7 +7,7 @@ gem 'figaro'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'zurb-foundation'
 gem 'devise'
-gem 'turbolinks'
+
 
 group :development, :test do
   gem "minitest-rails"

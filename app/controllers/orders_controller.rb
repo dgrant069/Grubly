@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       current_user.orders << @order
-      redirect_to restaurant_orders_url, notice: 'Order was successfully created.'
+      redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully created.'
     else
       render action: 'new'
     end

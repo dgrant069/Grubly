@@ -30,7 +30,7 @@
               <td>Not Finalized!</td>
             <% end %>
           <% end %>
-            <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)") %></td>
+            <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%m/%d/%Y at %I:%M%p") %></td>
 
           <% if current_user && policy(order).show? %>
             <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %> </td>

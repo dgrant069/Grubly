@@ -1,0 +1,20 @@
+<h1>Hiya <%= @user.username %>!</h1>
+
+<h6>Here are all your orders for review!</h6>
+
+<table>
+  <th>Number</th>
+  <th>Restaurant</th>
+  <th>Time Order was Placed</th>
+  <th>Place Order Again?</th>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <% @restaurant = order.restaurant.id %>
+      <td><%= link_to "Order #{order.id}", restaurant_order_path(@restaurant, order) %></td><br>
+      <td><%= link_to "#{order.restaurant.name}", restaurant_path(@restaurant) %></td><br>
+      <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%m/%d/%Y at %I:%M%p") %></td>
+      <td><%= button_to "Hell yes!" %></td>
+    </tr>
+  <% end %>
+</table>

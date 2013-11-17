@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to users_path
+    @user = User.find(params[:id])
+    @orders = @user.orders.where(finalize: true)
+    authorize @user
   end
 
   def new

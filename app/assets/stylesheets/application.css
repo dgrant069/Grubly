@@ -13,3 +13,11 @@
  *= require_bootstrap
  *= require_tree .
 */
+
+#customer_order {
+  display: none;
+}
+
+#building_order {
+  display: none;
+}

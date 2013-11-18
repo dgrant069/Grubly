@@ -12,7 +12,10 @@ class OrderedItemsController < ApplicationController
     authorize @order
 
     if @ordered_item.save
-      redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully added.'
+      respond_to do |format|
+        format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully added.' }
+        format.js
+      end
     else
       render action: 'new'
     end
@@ -26,7 +29,10 @@ class OrderedItemsController < ApplicationController
     authorize @order
 
     if @ordered_item.update(ordered_item_params)
-      redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully updated.' }
+        format.js
+      end
     else
       render action: 'edit'
     end
@@ -35,7 +41,10 @@ class OrderedItemsController < ApplicationController
   def destroy
     authorize @order
     @ordered_item.destroy
-    redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully destroyed.' }
+      format.js
+    end
   end
 
 private

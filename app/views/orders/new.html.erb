@@ -41,4 +41,30 @@
 
 <%= render 'form' %>
 
+<div id="customer_order">
+  <table>
+      <thead>
+        <tr>
+          <th>Order Number</th>
+          <th>For</th>
+          <th>Special Notes</th>
+          <th>Finalized?</th>
+          <th>Time Ordered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="order_data">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+  </table>
+</div><br>
+
+<div id="building_order">
+
+</div>
 <%= link_to 'Cancel', restaurant_path(@restaurant) %>

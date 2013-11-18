@@ -1,1 +1,6 @@
 $('#new_link').hide().after('<%= j render("form") %>');
+$("#cancel_link").on("click", function() {
+    $('#new_item').remove();
+    $("#cancel_link").remove();
+    $('#new_link').show();
+});

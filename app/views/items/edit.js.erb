@@ -1,2 +1,7 @@
 $('#new_link').hide().after('<%= j render("form") %>');
 $("tr#<%= @item.id %>").remove();
+$("#cancel_link").on("click", function()  {
+    $('#edit_item_<%= @item.id %>').remove();
+    $("#cancel_link").remove();
+    $('#menu-list').append('<%= j render(@item) %>');
+});

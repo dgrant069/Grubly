@@ -15,6 +15,10 @@
     <%= f.label :any_special_notes_for_this_order? %><br>
     <%= f.text_field :note %>
   </div>
+  <%= f.fields_for :ordered_item do |builder| %>
+    <%= render 'ordered_item_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Item to Order", f, :ordered_items %><br><br>
   <div class="actions">
     <%= f.submit %>
   </div>

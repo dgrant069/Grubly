@@ -1,6 +1,6 @@
 $('#new_order').fadeOut();
 $('#customer_order').fadeIn();
-$('#order_data td').first().html('<%= @order.id %>');
+$('#order_data td').first().html('<%= link_to "#{@order.id}", restaurant_order_path(@restaurant, @order) %>');
 $('#order_data td').first().next().html('<%= @order.user.username %>');
 $('#order_data td').first().next().next().html('<%= @order.note %>');
 $('#order_data td').first().next().next().next().html('Not Finalized!');

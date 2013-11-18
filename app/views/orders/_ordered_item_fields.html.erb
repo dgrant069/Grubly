@@ -1,0 +1,16 @@
+<fieldset>
+  <div class="field">
+    <%= f.label :dish_name %>
+    <%= f.collection_select :item_id, @restaurant.items, :id, :dish_name %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_field :note %>
+  </div>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Remove Item From Order", '#', class: "remove_fields" %>
+</fieldset>

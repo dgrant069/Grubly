@@ -1,1 +1,2 @@
 $('#new_link').hide().after('<%= j render("form") %>');
+$("tr#<%= @item.id %>").remove();

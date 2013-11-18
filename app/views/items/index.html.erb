@@ -1,8 +1,26 @@
 <h1>Listing items</h1>
+<table id="menu-list">
+  <thead>
+    <tr>
+      <th>Dish name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Subcategory</th>
+      <th>Inventory</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @items %>
+  </tbody>
 
-<%= render 'table' %>
-
+</table>
 <br>
+
+<div id="test">
+</div>
 
 <% if current_user && policy(@restaurant).update? %>
   <%= link_to 'New Item', new_restaurant_item_path, id: "new_link", remote: true %><br>

@@ -1,0 +1,5 @@
+$('#edit_item_<%= @item.id %>').remove();
+$('#new_link').show();
+$("#cancel_link").remove();
+$('#menu-list').append('<%= j render(@item) %>');
+

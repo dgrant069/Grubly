@@ -1,6 +1,5 @@
 <h1>Listing items</h1>
-
-<table>
+<table id="menu-list">
   <thead>
     <tr>
       <th>Dish name</th>
@@ -13,30 +12,18 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.dish_name %></td>
-        <td><%= "#{item.dollars}.#{item.cents}" %></td>
-        <td><%= item.description %></td>
-        <td><%= item.subcategory %></td>
-        <td><%= item.inventory %></td>
-        <% if current_user && policy(item).update? %>
-          <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
-        <% end %>
-        <% if current_user && policy(item).destroy? %>
-          <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
+    <%= render @items %>
   </tbody>
-</table>
 
+</table>
 <br>
 
+<div id="test">
+</div>
+
 <% if current_user && policy(@restaurant).update? %>
-  <%= link_to 'New Item', new_restaurant_item_path %><br>
+  <%= link_to 'New Item', new_restaurant_item_path, id: "new_link", remote: true %><br>
 <% end %>
 
 <%= link_to 'Back', restaurant_path(@restaurant) %>

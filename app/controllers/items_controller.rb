@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
+    sleep 1
     @items = @restaurant.items.all
   end
 
@@ -27,10 +28,13 @@ class ItemsController < ApplicationController
     @item.restaurant_id = @restaurant.id
     authorize @item
 
-    if @item.save
-      redirect_to restaurant_items_url, notice: 'Item was successfully created.'
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to restaurant_items_url, notice: 'Item was successfully created.' }
+        format.js
+      else
+        render action: 'new'
+      end
     end
   end
 
@@ -39,7 +43,10 @@ class ItemsController < ApplicationController
     authorize @item
 
     if @item.update(item_params)
-      redirect_to restaurant_items_url, notice: 'Item was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to restaurant_items_url, notice: 'Item was successfully updated.' }
+        format.js
+      end
     else
       render action: 'edit'
     end
@@ -49,7 +56,10 @@ class ItemsController < ApplicationController
   def destroy
     authorize @item
     @item.destroy
-    redirect_to restaurant_items_url, notice: 'Item was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to restaurant_items_url, notice: 'Item was successfully destroyed.' }
+      format.js
+    end
   end
 
   private

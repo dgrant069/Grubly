@@ -30,11 +30,11 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-          format.html { redirect_to restaurant_items_url, notice: 'Item was successfully created.' }
+        format.html { redirect_to restaurant_items_url, notice: 'Item was successfully created.' }
+        format.js
       else
         render action: 'new'
       end
-      format.js
     end
   end
 
@@ -42,14 +42,13 @@ class ItemsController < ApplicationController
   def update
     authorize @item
 
-    #if @item.update(item_params)
-      # redirect_to restaurant_items_url, notice: 'Item was successfully updated.'
+    if @item.update(item_params)
       respond_to do |format|
         format.html { redirect_to restaurant_items_url, notice: 'Item was successfully updated.' }
         format.js
-      #end
-    #else
-     # render action: 'edit'
+      end
+    else
+      render action: 'edit'
     end
   end
 

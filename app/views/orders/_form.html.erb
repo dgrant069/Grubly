@@ -15,9 +15,7 @@
     <%= f.label :note, "List any special notes for this order (e.g. allergies)" %><br>
     <%= f.text_field :note %>
   </div>
-  <%= f.fields_for :ordered_item do |builder| %>
-    <%= render 'ordered_item_fields', f: builder %>
-  <% end %>
+  <%= associated_fields(f, :ordered_items, @ordered_items) %>
   <%= link_to_add_fields "Add Another Item", f, :ordered_items %><br><br>
   <div class="actions">
     <%= f.submit %>

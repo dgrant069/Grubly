@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = @restaurant.orders.new
+    @ordered_item = @order.ordered_items.build
     @items = @restaurant.items
   end
 
@@ -76,6 +77,6 @@ class OrdersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def order_params
       params.require(:order).permit(:item_id, :quantity, :note, :restaurant_id,
-        :user_id, :user, :item_to_be_added, :finalize, :completed, ordered_items_attributes: [:ordered_item_id, :restaurant_id, '_destroy', :item_id, :quantity, :note, :user_id])
+        :user_id, :user, :item_to_be_added, :finalize, :completed, :ordered_item, ordered_items_attributes: [:ordered_item_id, :restaurant_id, '_destroy', :item_id, :quantity, :note, :user_id])
     end
 end

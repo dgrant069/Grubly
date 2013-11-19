@@ -8,8 +8,6 @@ I18n Abilities
 
 - Date and Time is formatted differently than the usual UTC format, set through the locales/en.yml; rendered how we want it to be viewed.
 
-![Screencap](/public/images/screenshot.png "Screencap of Actual Code")
-
 ![Screencap](/public/images/screenshot2.png "Screencap of Rendered View")
 
 - Detecting correct time zone through the Ruby gem "browser-timezone-rails", which sets a JS-based cookie, detecting the system's time zone through the end-user's machine, used by Rails to render local time.

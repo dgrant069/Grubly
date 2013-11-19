@@ -1,6 +1,6 @@
 <fieldset>
   <div class="field">
-    <%= f.label :dish_name %>
+    <%= f.label :dish_name %><br>
     <%= f.collection_select :item_id, @restaurant.items, :id, :dish_name %>
   </div>
   <div class="field">

@@ -8,6 +8,9 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 require "minitest/focus"
 require "minitest/pride"
+require "capybara/webkit"
+
+Capybara.javascript_driver = :webkit
 
 class ActiveSupport::TestCase
   fixtures :all

@@ -206,8 +206,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass!
-  capybara-webkit
   browser-timezone-rails
+  capybara-webkit
   coffee-rails (~> 4.0.0)
   devise
   faker

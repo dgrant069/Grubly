@@ -8,13 +8,12 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'zurb-foundation'
 gem 'devise'
 gem 'browser-timezone-rails'
-
+gem 'pg'
 
 group :development, :test do
   gem "minitest-rails"
   gem 'pry-rails'
   gem "faker"
-  gem "sqlite3"
   gem "launchy"
   gem "turn"
   gem "capybara-webkit"

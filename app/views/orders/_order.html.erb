@@ -25,7 +25,7 @@
           <% end %>
 
           <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>
-            <td> | <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %> | </td>
+            <td><%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %></td>
           <% end %>
 
           <% if current_user && (order.finalize? == false && policy(order).destroy?) || policy(order).edit_after_final? %>

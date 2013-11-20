@@ -6,9 +6,9 @@ class CreateOrderedItems < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :restaurants, :user_id, :integer
-    add_column :users, :restaurant_id, :integer
+    # add_column :restaurants, :user_id, :integer
+    # add_column :users, :restaurant_id, :integer
 
-    remove_column :orders, :item_id
+    # remove_column :orders, :item_id
   end
 end

@@ -12,3 +12,11 @@
  *= require foundation_and_overrides
  *= require_tree .
 */
+
+#customer_order {
+  display: none;
+}
+
+#building_order {
+  display: none;
+}

@@ -26,6 +26,10 @@
           </ul>
 
           <ul class="right">
+              <% if policy(User).index? %>
+            <li class="divider"></li>
+            <li><%= link_to 'User Management Page', users_path %>
+              <% end %>
             <li class="divider"></li>
             <li><%= link_to "Restaurants", restaurants_path %></li>
             <li class="divider"></li>

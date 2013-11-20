@@ -1,4 +1,4 @@
-<%= form_for [@restaurant, @order] do |f| %>
+<%= form_for [@restaurant, @order], remote: true do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -12,9 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :any_special_notes_for_this_order? %><br>
+    <%= f.label :note, "List any special notes for this order (e.g. allergies)" %><br>
     <%= f.text_field :note %>
   </div>
+  <%= associated_fields(f, :ordered_items, @ordered_items) %>
+  <%= link_to_add_fields "Add Another Item", f, :ordered_items %><br><br>
   <div class="actions">
     <%= f.submit %>
   </div>

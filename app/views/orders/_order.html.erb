@@ -1,0 +1,36 @@
+<% if current_user && policy(order).show? %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.user.username %></td>
+          <td><%= order.note %></td>
+          <% if current_user && policy(order).show? %>
+            <% if order.finalize? %>
+              <td>Finalized!</td>
+            <% else %>
+              <td>Not Finalized!</td>
+            <% end %>
+          <% end %>
+            <td><%= l order.created_at %></td>
+
+          <% if current_user && policy(order).show? %>
+            <td><%= link_to 'Show', restaurant_order_path(@restaurant, order) %> </td>
+          <% end %>
+
+          <% if current_user && policy(order).edit_after_final? && (order.completed? == false) %>
+            <td><%= button_to 'Order Completed!', restaurant_order_path(@restaurant, order, order: {completed: true}), method: :put %></td>
+          <% elsif order.completed? %>
+            <td>Order Filled!</td>
+          <% else %>
+            <td>Not Filled!</td>
+          <% end %>
+
+          <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>
+            <td> | <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, order) %> | </td>
+          <% end %>
+
+          <% if current_user && (order.finalize? == false && policy(order).destroy?) || policy(order).edit_after_final? %>
+            <td><%= link_to 'Destroy', restaurant_order_path(@restaurant, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
+        </tr>
+        <% end %>

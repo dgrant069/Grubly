@@ -7,6 +7,7 @@ gem 'figaro'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'zurb-foundation'
 gem 'devise'
+gem 'browser-timezone-rails'
 
 
 group :development, :test do

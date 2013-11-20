@@ -13,7 +13,7 @@
       <% @restaurant = order.restaurant.id %>
       <td><%= link_to "Order #{order.id}", restaurant_order_path(@restaurant, order) %></td><br>
       <td><%= link_to "#{order.restaurant.name}", restaurant_path(@restaurant) %></td><br>
-      <td><%= order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%m/%d/%Y at %I:%M%p") %></td>
+      <td><%= l order.created_at %></td>
       <td><%= button_to "Hell yes!" %></td>
     </tr>
   <% end %>

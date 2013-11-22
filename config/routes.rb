@@ -1,7 +1,5 @@
 Grubly::Application.routes.draw do
 
-  resources :photos
-
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :users do

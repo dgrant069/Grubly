@@ -26,10 +26,13 @@
 </p>
 
 <% @restaurant.photos.each do |photo| %>
-  <%= image_tag photo.photo.url(:medium) %>
-<% end %>
+  <%= image_tag photo.photo.url(:medium) %><br>
+  <% if current_user && policy(@restaurant).update? %>
+    <%= link_to 'Edit Photo', edit_restaurant_photo_path(@restaurant, photo) %><br>
+    <%= link_to 'Destroy Photo', restaurant_photo_path(@restaurant, photo), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <% end %>
+<% end %><br>
 
-<p><%= link_to 'Add a Photo?', new_restaurant_photo_path(@restaurant) %></p>
 
 <% if current_user %>
   <br><br><strong><%= link_to 'View Our Menu', new_restaurant_order_path(@restaurant) %></strong><br>
@@ -39,7 +42,8 @@
 <% end %>
 
 <% if current_user && policy(@restaurant).update? %>
-  <%= link_to 'Add Items to Menu', restaurant_items_path(@restaurant) %><br>
+  <%= link_to 'Add a Photo', new_restaurant_photo_path(@restaurant) %><br>
+  <%= link_to 'Add Items to Menu', restaurant_items_path(@restaurant) %><br><br>
   <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <% end %>
 <%= link_to 'Back', restaurants_path %>

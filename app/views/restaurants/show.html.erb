@@ -25,6 +25,12 @@
   <%= @restaurant.website %>
 </p>
 
+<% @restaurant.photos.each do |photo| %>
+  <%= image_tag photo.photo.url(:medium) %>
+<% end %>
+
+<p><%= link_to 'Add a Photo?', new_restaurant_photo_path(@restaurant) %></p>
+
 <% if current_user %>
   <br><br><strong><%= link_to 'View Our Menu', new_restaurant_order_path(@restaurant) %></strong><br>
   <strong><%= link_to 'Order History', restaurant_orders_path(@restaurant) %></strong><br><br>

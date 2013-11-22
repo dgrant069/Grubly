@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106043032) do
+ActiveRecord::Schema.define(version: 20131122163805) do
 
   create_table "items", force: true do |t|
     t.string   "dish_name"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 20131106043032) do
     t.integer  "user_id"
     t.boolean  "finalize",      default: false
     t.boolean  "completed",     default: false
+  end
+
+  create_table "photos", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
   end
 
   create_table "restaurants", force: true do |t|

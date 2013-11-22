@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :restaurants
   has_many :orders
+  has_many :photos, as: :photoable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable

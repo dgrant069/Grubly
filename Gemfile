@@ -9,6 +9,9 @@ gem 'zurb-foundation'
 gem 'devise'
 gem 'browser-timezone-rails'
 gem 'pg'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'mime-types'
 
 group :development, :test do
   gem "minitest-rails"

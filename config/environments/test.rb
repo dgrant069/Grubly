@@ -33,4 +33,14 @@ Grubly::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.paperclip_defaults = {
+   :storage => :s3,
+   :s3_protocol => 'http',
+   :s3_credentials => {
+     :bucket => ENV['AWS_TEST_BUCKET'],
+     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+     }
+  }
 end

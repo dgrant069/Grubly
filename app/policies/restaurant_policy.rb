@@ -1,4 +1,8 @@
 RestaurantPolicy = Struct.new(:user, :restaurant) do
+  def new?
+    user.present? && ((user.role == "admin") || (restaurant.owner == user.id))
+  end
+
   def create?
     user.present? && ((user.role == "admin") || (user.role == "owner"))
   end
@@ -12,6 +16,10 @@ RestaurantPolicy = Struct.new(:user, :restaurant) do
   end
 
   def update?
+    user.present? && ((user.role == "admin") || (restaurant.owner == user.id))
+  end
+
+  def edit_photo?
     user.present? && ((user.role == "admin") || (restaurant.owner == user.id))
   end
 

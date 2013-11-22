@@ -16,17 +16,19 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     @photo = @photoable.photos.new
+    authorize @photoable
   end
 
   # GET /photos/1/edit
   def edit
+    authorize @photoable
   end
 
   # POST /photos
   # POST /photos.json
   def create
     @photo = @photoable.photos.new(photo_params)
-
+    authorize @photoable
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photoable, notice: 'Photo was successfully created.' }
@@ -41,6 +43,7 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1
   # PATCH/PUT /photos/1.json
   def update
+    authorize @photoable
     respond_to do |format|
       if @photo.update(photo_params)
         format.html { redirect_to @photoable, notice: 'Photo was successfully updated.' }
@@ -55,6 +58,7 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    authorize @photoable
     @photo = @photoable.photos.find(params[:id])
     @photo.destroy
     respond_to do |format|

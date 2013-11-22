@@ -1,5 +1,7 @@
 <h1>Editing photo</h1>
 
-<%= render 'form' %>
+<% if policy(@photoable).edit_photo? %>
+  <%= render 'form' %>
+<% end %>
 
 <%= link_to 'Back', @photoable %>

@@ -1,43 +1,12 @@
-<%= form_for [@restaurant, @item], remote: true do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :dish_name %><br>
-    <%= f.text_field :dish_name %>
-  </div>
-  <div class="field">
-    <%= f.label :dollars %><br>
-    <%= f.number_field :dollars %>
-  </div>
-  <div class="field">
-    <%= f.label :cents %><br>
-    <%= f.number_field :cents %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :subcategory %><br>
-    <%= f.text_field :subcategory %>
-  </div>
-  <div class="field">
-    <%= f.label :inventory %><br>
-    <%= f.number_field :inventory %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for [@restaurant, @item], remote: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :dish_name %>
+  <%= f.input :description %>
+  <%= f.input :dollars %>
+  <%= f.input :cents %>
+  <%= f.input :subcategory, label: "Menu Group", hint: "Appetizers, Drinks, Etc" %>
+  <%= f.input :inventory %>
+  <%= f.button :submit %>
 <% end %>
 
 <%= link_to 'Cancel', restaurant_items_path, id: "cancel_link", remote: true %>

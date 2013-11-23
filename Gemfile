@@ -12,6 +12,7 @@ gem 'pg'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'mime-types'
+gem 'simple_form'
 
 group :development, :test do
   gem "minitest-rails"

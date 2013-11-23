@@ -2,8 +2,10 @@
 
 <% @user.photos.each do |photo| %>
   <%= image_tag photo.photo.url(:avatar) %><br>
-  <%= link_to 'Edit Avatar', edit_user_photo_path(@user, photo) %><br>
-  <%= link_to 'Delete Avatar', user_photo_path(@user, photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if policy(@user).edit_photo? %>
+    <%= link_to 'Edit Avatar', edit_user_photo_path(@user, photo) %><br>
+    <%= link_to 'Delete Avatar', user_photo_path(@user, photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 <% end %>
 <% policy(@user).edit_photo? && unless @user.photos.any? %>
   <%= link_to 'New Avatar', new_user_photo_path(@user) %>

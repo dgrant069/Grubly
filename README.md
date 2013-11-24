@@ -7,10 +7,7 @@ Local boutique restaurants oftentimes face challenges that larger established ea
 View Tricks and I18n Abilities
 ==============================
 
-- Date and Time is formatted differently than the usual UTC format, set through the locales/en.yml; rendered how we want it to be viewed.
 
-![Screencap](/public/images/screenshot2.png "Screencap of Rendered View")
-
-- Detecting correct time zone through the Ruby gem "browser-timezone-rails", which sets a JS-based cookie, detecting the system's time zone through the end-user's machine, used by Rails to render local time.
-
-- Template inheritance is handled through several different partials stored in the views/application directory, freeing us up to overwrite them at will when necessary.
+Simple Form examples.
+![Screencap](/public/images/simpleform 1.png "Screencap of Rendered View")
+![Screencap](/public/images/simpleform 2.png "Screencap of Rendered View")

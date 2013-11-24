@@ -13,6 +13,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'mime-types'
 gem 'simple_form'
+gem 'draper'
 
 group :development, :test do
   gem "minitest-rails"

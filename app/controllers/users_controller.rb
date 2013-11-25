@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = UserDecorator.find(params[:id])
     @orders = @user.orders.where(finalize: true)
     authorize @user
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User was successfully destroyed"
   end
 
-  private
+private
 
   def user_params
     params.require(:user).permit(:role)

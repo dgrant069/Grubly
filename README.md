@@ -14,3 +14,10 @@ View Tricks and I18n Abilities
 - Detecting correct time zone through the Ruby gem "browser-timezone-rails", which sets a JS-based cookie, detecting the system's time zone through the end-user's machine, used by Rails to render local time.
 
 - Template inheritance is handled through several different partials stored in the views/application directory, freeing us up to overwrite them at will when necessary.
+
+Vulnerabilities
+===============
+
+None reported from Brakeman!
+
+![Screencap](/public/images/brakemanreport.png "Screencap of Brakeman Report")

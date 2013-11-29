@@ -14,11 +14,11 @@ User.create(:username => "Owner1", :email => "owner1@example.com", :password => 
 User.create(:username => "Owner2", :email => "owner2@example.com", :password => "password",
   :password_confirmation => "password", :role => "owner")
 
-Restaurant.create(:name => "Metropolitan Grill", :address => "700 Stewart St, Seattle, WA 98000",
+Restaurant.create(:name => "Metropolitan Grill", :address => "820 2nd Ave, Seattle, WA 98104",
   :category => "American", :phone_number => "206-555-4646", :website => "www.metropolitangrill.com",
   :owner => 2)
 
-Restaurant.create(:name => "The Triple Door", :address => "315 James St, Seattle, WA 98000",
+Restaurant.create(:name => "The Triple Door", :address => "216 Union St, Seattle, WA 98101",
   :category => "Thai", :phone_number => "206-555-6464", :website => "www.thetripledoor.com",
   :owner => 3)
 

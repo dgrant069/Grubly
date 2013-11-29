@@ -22,8 +22,12 @@ Restaurant.create(:name => "The Triple Door", :address => "315 James St, Seattle
   :category => "Thai", :phone_number => "206-555-6464", :website => "www.thetripledoor.com",
   :owner => 3)
 
-Item.create(:dish_name => "Steak", :inventory => 100, :restaurant_id => 1, :dollars => 9, :cents => 99, :item_id => 1)
+Item.create(:dish_name => "Steak", description: "Tough, but edible", :inventory => 100, :restaurant_id => 1, :dollars => 9, :cents => 99, :item_id => 1)
 
-Item.create(:dish_name => "Fish and Chips", :inventory => 50, :restaurant_id => 1, :dollars => 15, :cents => 49, :item_id => 2)
+Item.create(:dish_name => "Fish and Chips", description: "Succulent as hell", :inventory => 50, :restaurant_id => 1, :dollars => 15, :cents => 49, :item_id => 2)
 
-Item.create(:dish_name => "Halibut", :inventory => 30, :restaurant_id => 1, :dollars => 49, :cents => 49, :item_id => 3)
+Item.create(:dish_name => "Halibut", description: "It's an ugly fish", :inventory => 30, :restaurant_id => 1, :dollars => 49, :cents => 49, :item_id => 3)
+
+Item.create(:dish_name => "Chicken Satays", description: "The old standby; too much peanut sauce", :inventory => 32, :restaurant_id => 2, :dollars => 5, :cents => 49, :item_id => 4)
+
+Item.create(:dish_name => "Pad Thai", description: "Super spicccy~~", :inventory => 20, :restaurant_id => 2, :dollars => 43, :cents => 99, :item_id => 5)

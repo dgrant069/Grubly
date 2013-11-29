@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
     else
       render action: 'new'
     end
+    OrderMailer.order_sent(@restaurant, @order).deliver
   end
 
   # PATCH/PUT /orders/1

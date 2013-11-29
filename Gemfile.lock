@@ -97,6 +97,8 @@ GEM
     json (1.8.1)
     launchy (2.4.0)
       addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     lockfile (2.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -142,6 +144,12 @@ GEM
       mime-types
     pg (0.17.0)
     polyglot (0.3.3)
+    postmark (1.0.1)
+      json
+      rake
+    postmark-rails (0.5.2)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.0)
     pry (0.9.12.3)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -239,6 +247,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails (= 2.3.0)
   launchy
+  letter_opener
   mime-types
   minitest-focus
   minitest-rails
@@ -246,6 +255,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip
   pg
+  postmark-rails
   pry-rails
   pundit
   rails (= 4.0.0)

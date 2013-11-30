@@ -1,3 +1,4 @@
+<div class="content">
 <h1>Orders for <%= "#{@restaurant.name}" %></h1>
 
 <% if (current_user && current_user.orders.any? { |order| order.restaurant_id == @restaurant.id }) || policy(@restaurant).update? %>
@@ -30,3 +31,4 @@
 <br>
 
 <%= link_to 'Back to Restaurant', restaurant_path(@restaurant) %><br>
+</div>

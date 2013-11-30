@@ -47,7 +47,7 @@ input {
 }
 
 #navitems ul {
-  margin-left:700px;
+  margin-left:500px;
 }
 
 #nav ul li {
@@ -99,7 +99,17 @@ input {
   overflow:hidden;
   background-color:#2a2a2a;
   position:relative;
-  background: image-url("Background_food_1.jpg") no-repeat center center fixed;
+  background: image-url("Background_food_4_1400.jpg") no-repeat center center fixed;
+}
+
+.contentsectiondark {
+  width:100%;
+  position:relative;
+  z-index:10;
+  min-height:300px;
+  overflow:hidden;
+  background-color:#2a2a2a;
+  position:relative;
 }
 
 #footer {

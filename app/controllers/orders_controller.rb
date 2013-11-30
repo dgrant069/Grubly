@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :load_restaurant
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :send_receipt]
 
   # GET /orders
   def index
@@ -62,6 +62,12 @@ class OrdersController < ApplicationController
       format.html { redirect_to  restaurant_orders_url, notice: 'Order was successfully destroyed.' }
       format.js
     end
+  end
+
+  def send_receipt
+    authorize @order
+    OrderMailer.send_receipt(@order).deliver
+    redirect_to restaurant_orders_url, notice: 'Receipt was successfully sent!'
   end
 
   private

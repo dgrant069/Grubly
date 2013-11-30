@@ -1,0 +1,9 @@
+Hello <%= @user.username %>!
+
+Here's your order acknowledgement receipt from <%= @restaurant.name %>:
+
+Order number <%= @order.id %> placed at <%= l @order.created_at %> is currently being prepared and will be ready shortly!
+
+Thank you for your patronage!
+
+- Grubly and <%= @restaurant.name %>

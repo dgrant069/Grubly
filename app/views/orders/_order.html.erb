@@ -1,6 +1,6 @@
 <% if current_user && policy(order).show? %>
         <tr>
-          <td><%= order.id %></td>
+          <td><%= link_to "Order #{order.id}", restaurant_order_path(@restaurant, order) %></td>
           <td><%= order.user.username %></td>
           <td><%= order.note %></td>
           <% if current_user && policy(order).show? %>
@@ -22,6 +22,10 @@
             <td>Order Filled!</td>
           <% else %>
             <td>Not Filled!</td>
+          <% end %>
+
+          <% if current_user && policy(order).edit_after_final? %>
+            <td><%= button_to 'Send Receipt!', send_receipt_restaurant_order_path(@restaurant, order), method: :post %></td>
           <% end %>
 
           <% if current_user && (order.finalize? == false && policy(order).update?) || policy(order).edit_after_final? %>

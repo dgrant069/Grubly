@@ -4,4 +4,6 @@ class Restaurant < ActiveRecord::Base
   has_many :customers, class_name: "User", through: :orders
   has_many :items, dependent: :destroy
   has_many :photos, as: :photoable
+  geocoded_by :address
+  after_validation :geocode
 end

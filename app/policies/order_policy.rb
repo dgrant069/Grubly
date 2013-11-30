@@ -27,7 +27,7 @@ OrderPolicy = Struct.new(:user, :order) do
     user.present? && ((user.id == order.user_id) || (order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 
-  def order_filled?
-
+  def send_receipt?
+    user.present? && ((order.restaurant.owner == user.id) || (user.role == "admin"))
   end
 end

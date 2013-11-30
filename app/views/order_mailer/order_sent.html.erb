@@ -1,0 +1,16 @@
+<h4>Hello <%= User.find(@restaurant.owner).username %>!</h4><br>
+
+<p>You have a new order that was placed at <strong><%= @restaurant.name %></strong>. Here are all the details:</p><br>
+
+<p>Ordered by: <strong><%= User.find(@order.user_id).username %></strong>, with email: <strong><%= User.find(@order.user_id).email %></strong></p><br>
+
+<p>Order <strong>#<%= @order.id %></strong></p>
+<p>Special Notes: <strong><%= @order.note %></strong></p>
+
+<p><strong>Items:</strong></p>
+
+<% @order.ordered_items.each do |item| %>
+  Dish: <%= @restaurant.items.find(item.item_id).dish_name %><br>
+  Quantity: <%= item.quantity %><br>
+  Note: <%= item.note %><br><br>
+<% end %>

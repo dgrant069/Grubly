@@ -14,6 +14,8 @@ gem 'aws-sdk'
 gem 'mime-types'
 gem 'simple_form'
 gem 'draper'
+gem 'postmark-rails'
+gem 'geocoder'
 
 group :development, :test do
   gem "minitest-rails"
@@ -22,6 +24,7 @@ group :development, :test do
   gem "launchy"
   gem "turn"
   gem "capybara-webkit"
+  gem "letter_opener"
 end
 
 group :test do

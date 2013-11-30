@@ -27,6 +27,8 @@
   <%= @restaurant.website %>
 </p>
 
+<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.latitude %>,<%= @restaurant.longitude %>&zoom=16&size=300x300&markers=color:green|<%= @restaurant.latitude %>, <%= @restaurant.longitude %>&maptype=roadmap&sensor=false">
+
 <% @restaurant.photos.each do |photo| %>
   <%= image_tag photo.photo.url(:medium) %><br>
   <% if current_user && policy(@restaurant).update? %>

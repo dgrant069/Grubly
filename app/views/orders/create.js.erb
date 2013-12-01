@@ -1,8 +1,9 @@
 $('#new_order').fadeOut();
 $('#customer_order').fadeIn();
-$('#order_data td').first().html('<%= link_to "#{@order.id}", restaurant_order_path(@restaurant, @order) %>');
+$('#order_data td').first().html('<%= link_to "Order #{@order.id}", restaurant_order_path(@restaurant, @order) %>');
 $('#order_data td').first().next().html('<%= @order.user.username %>');
 $('#order_data td').first().next().next().html('<%= @order.note %>');
 $('#order_data td').first().next().next().next().html('Not Finalized!');
 $('#order_data td').first().next().next().next().next().html('<%= @order.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%m/%d/%Y at %I:%M%p") %>');
 $('#building_order').fadeIn();
+$('#finalize_prompt').fadeIn();

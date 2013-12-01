@@ -20,3 +20,7 @@
 #building_order {
   display: none;
 }
+
+#finalize_prompt {
+  display: none;
+}

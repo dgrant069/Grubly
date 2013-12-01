@@ -1,27 +1,33 @@
 <div class="menusection">
-  <% item.subcategory.each do |subcat| %>
-    <% column_count = 1 %>
+  <% @items_by_category.each do |subcat| %>
     <h2><%= subcat.subcategory %></h2>
     <div class="cols clearfix">
+
+    <% for item in @items_by_category[subcat] %>
+      <% column_count = 0 %>
       <% if column_count % 2 == 0 %>
         <div class="col1">
       <% else %>
         <div class="col2">
       <% end %>
-      <div class="menuitem", id="<%= item.id %>">
-        <h3><%= subcat.dish_name %></h3>
-        <p><%= subcat.description %></p>
-        <p class="price"><%= "#{subcat.dollars}.#{subcat.cents}" %></p>
-        <p class="calories"><%= subcat.inventory %></p>
-        <% if current_user && policy(item).update? %>
-          <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item), id: "edit_link_#{item.id}", remote: true %>
-        <% end %>
-        <% if current_user && policy(item).destroy? %>
-          <%= link_to 'Destroy', restaurant_item_path(@restaurant, item), id: "delete_link_#{item.id}", method: :delete, data: { confirm: 'Are you sure?', remote: true } %>
-        <% end %>
-      </div>
+
+          <div class="menuitem", id="<%= item.id %>">
+            <h3><%= item.dish_name %></h3>
+            <p><%= item.description %></p>
+            <p class="price"><%= "$#{item.dollars}.#{item.cents}" %></p>
+            <p class="calories"><%= item.inventory %></p>
+            <% if current_user && policy(item).update? %>
+              <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item), id: "edit_link_#{item.id}", remote: true %>
+            <% end %>
+            <% if current_user && policy(item).destroy? %>
+              <%= link_to 'Destroy', restaurant_item_path(@restaurant, item), id: "delete_link_#{item.id}", method: :delete, data: { confirm: 'Are you sure?', remote: true } %>
+            <% end %>
+          </div>
+        </div>
+
+      <% column_count = column_count + 1 %>
+    <% end %>
+
     </div>
-    <% column_count ++ %>
   <% end %>
-  <% return column_count %>
 </div>

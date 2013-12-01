@@ -1,79 +1,84 @@
-<div class="content">
-<h1><%= "#{@restaurant.name}"%></h1>
+<div class="contentsection beige">
+  <div class="content">
+    <h1><%= "#{@restaurant.name}"%></h1>
+    <h2>Some catchy tag line</h2>
+    <div id="menu">
+      <div class="menusection">
+        <% @items_by_category.each do |subcat, item| %>
+          <h2><%= subcat %></h2>
+          <div class="cols clearfix">
 
-<table>
-   <thead>
-     <tr>
-       <th>Dish name</th>
-       <th>Price</th>
-       <th>Description</th>
-       <th>Subcategory</th>
-       <th>Inventory</th>
-       <th></th>
-       <th></th>
-       <th></th>
-     </tr>
-   </thead>
+          <% for dish in item %>
+            <% column_count = 0 %>
+            <% if column_count % 2 == 0 %>
+              <div class="col1">
+            <% else %>
+              <div class="col2">
+            <% end %>
 
-   <tbody>
-     <% @items.each do |item| %>
-       <tr>
-         <td><%= item.dish_name %></td>
-         <td><%= "#{item.dollars}.#{item.cents}" %></td>
-         <td><%= item.description %></td>
-         <td><%= item.subcategory %></td>
-         <td><%= item.inventory %></td>
-         <td><%= link_to 'Details', restaurant_item_path(@restaurant, item) %></td>
-         <% if current_user && policy(item).update? %>
-           <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
-         <% end %>
-         <% if current_user && policy(item).destroy? %>
-           <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <% end %>
-       </tr>
-     <% end %>
-   </tbody>
- </table>
+                <div class="menuitem", id="<%= dish.id %>">
+                  <h3><%= dish.dish_name %>
+                    <% if current_user && policy(dish).update? %>
+                      <%= link_to 'Details', restaurant_item_path(@restaurant, dish) %>
+                    <% end %>
+                  </h3>
+                  <p><%= dish.description %></p>
+                  <p class="price"><%= "$#{dish.dollars}.#{dish.cents}" %></p>
+                  <p class="calories"><%= dish.inventory %></p>
+                </div>
+              </div>
 
- <br>
- <% if current_user && policy(@restaurant).item_create? %>
-   <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %><br><br>
- <% end %>
+            <% column_count = column_count + 1 %>
+          <% end %>
 
- <h3>Ready to place an order?</h3>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<%= render 'form' %>
 
-<div id="customer_order">
-  <table>
-      <thead>
-        <tr>
-          <th>Order Number</th>
-          <th>For</th>
-          <th>Special Notes</th>
-          <th>Finalized?</th>
-          <th>Time Ordered</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="order_data">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-  </table>
-</div><br>
+    <br>
+    <% if current_user && policy(@restaurant).item_create? %>
+      <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %><br><br>
+    <% end %>
 
-<div id="building_order">
+    <h3>Ready to place an order?</h3>
 
-</div>
-<div id="finalize_prompt">
-  <h4><strong>Don't forget to finalize your order!</strong></h4>
-  <p>Click on your order in the Order Number column to review before finalizing.</p>
-</div>
+    <%= render 'form' %>
 
-<%= link_to 'Cancel', restaurant_path(@restaurant) %>
+    <div id="customer_order">
+      <table>
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>For</th>
+              <th>Special Notes</th>
+              <th>Finalized?</th>
+              <th>Time Ordered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="order_data">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <br>
+
+    <div id="building_order">
+
+    </div>
+      <div id="finalize_prompt">
+        <h4><strong>Don't forget to finalize your order!</strong></h4>
+        <p>Click on your order in the Order Number column to review before finalizing.</p>
+      </div>
+
+    <%= link_to 'Cancel', restaurant_path(@restaurant) %>
+    </div>
+  </div>
 </div>

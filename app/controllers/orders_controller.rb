@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     @order = @restaurant.orders.new
     @ordered_item = @order.ordered_items.build
     @items = @restaurant.items
+    @items_by_category = @items.group_by{ |t| t.subcategory }
   end
 
   # GET /orders/1/edit

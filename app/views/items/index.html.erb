@@ -1,29 +1,49 @@
-<h1>Listing items</h1>
-<table id="menu-list">
-  <thead>
-    <tr>
-      <th>Dish name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Subcategory</th>
-      <th>Inventory</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @items %>
-  </tbody>
+<div class="contentsection beige">
+  <div class="content">
+    <h1>Some Tag Line</h1>
+    <h2>With a sub tag line</h2>
+    <div id="menu">
+      <div class="menusection">
+        <% @items_by_category.each do |subcat, item| %>
+          <h2><%= subcat %></h2>
+          <div class="cols clearfix">
 
-</table>
-<br>
+          <% for dish in item %>
+            <% column_count = 0 %>
+            <% if column_count % 2 == 0 %>
+              <div class="col1">
+            <% else %>
+              <div class="col2">
+            <% end %>
 
-<div id="test">
+                <div class="menuitem", id="<%= dish.id %>">
+                  <h3><%= dish.dish_name %></h3>
+                  <p><%= dish.description %></p>
+                  <p class="price"><%= "$#{dish.dollars}.#{dish.cents}" %></p>
+                  <p class="calories"><%= dish.inventory %></p>
+                  <% if current_user && policy(dish).update? %>
+                    <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, dish), id: "edit_link_#{dish.id}", remote: true %>
+                  <% end %>
+                  <% if current_user && policy(dish).destroy? %>
+                    <%= link_to 'Destroy', restaurant_item_path(@restaurant, dish), id: "delete_link_#{dish.id}", method: :delete, data: { confirm: 'Are you sure?', remote: true } %>
+                  <% end %>
+                </div>
+              </div>
+
+            <% column_count = column_count + 1 %>
+          <% end %>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if current_user && policy(@restaurant).update? %>
+      <%= link_to 'New Item', new_restaurant_item_path, id: "new_link", remote: true %><br>
+    <% end %>
+
+    <%= link_to 'Back', restaurant_path(@restaurant) %>
+
+  </div>
 </div>
 
-<% if current_user && policy(@restaurant).update? %>
-  <%= link_to 'New Item', new_restaurant_item_path, id: "new_link", remote: true %><br>
-<% end %>
-
-<%= link_to 'Back', restaurant_path(@restaurant) %>

@@ -1,0 +1,15 @@
+        <ul id="hover1" class="f-dropdown">
+          <% if current_user %>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to "Login with Twitter", user_omniauth_authorize_path(:twitter) %></li>
+          <% end %>
+        </ul>
+
+<div id='overlay'></div>
+<div id='modal'>
+    <div id='content'>No JavaScript Yet!</div>
+    <a href='#' id='close'>close</a>
+</div>

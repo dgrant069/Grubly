@@ -1,6 +1,45 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h2 class="">Hello awesome Grubly users!</h2>
+<div class="contentsection" id="header" style="50% 0 no-repeat; height:645px;">
+  <div class="content">
+    <h1>Never Miss Your <br>Favorite Dish</h1>
+    <p>How much is left of your favorite dish? Call dibs by ordering with gubly!</p>
+    <a href="#Menu" class="button"/>Find a Restaurant &rsaquo;</a>
   </div>
 </div>
-<h2><%= link_to "View Restaurants", restaurants_path %></h2>
+<div class="contentsection dark" style="background:url(images/mastimage.jpg) 50% 50px no-repeat;">
+  <div class="content">
+    <div class="stage">
+      <h1>Specials</h1>
+      <p class="events">Checkout the hot and trending deals by Restaurants in your area</p><br>
+      <div id="contentright">
+        <div id="slideshow" class="flexslider">
+          <ul class="slides">
+            <li><img alt="project" src="images/fun1.jpg" class="roid"/>
+              <p class="flex-caption">New Year's Eve 2012</p>
+            </li>
+            <li>
+              <img alt="project" src="images/fun2.jpg" class="roid"/>
+              <p class="flex-caption">Letting the good times roll.</p>
+            </li>
+            <li>
+              <img alt="project" src="images/fun3.jpg" class="roid"/>
+              <p class="flex-caption">Cinco De Mayo 2012</p>
+            </li>
+            <li>
+              <img alt="project" src="images/fun4.jpg" class="roid"/>
+              <p class="flex-caption">Random Night</p>
+            </li>
+            <li>
+              <img alt="project" src="images/fun5.jpg" class="roid"/>
+              <p class="flex-caption">Buy your Mom a draft night.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Sign In', new_user_session_path %>
+<%= link_to 'Sign Up', new_user_registration_path %>
+<%= link_to "Login with Twitter", user_omniauth_authorize_path(:twitter) %>
+

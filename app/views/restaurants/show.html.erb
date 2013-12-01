@@ -1,3 +1,5 @@
+<div class="content">
+<h1><%= @restaurant.name %></h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -49,3 +51,24 @@
   <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <% end %>
 <%= link_to 'Back', restaurants_path %>
+
+<div class="left">
+  <h1>Specials</h1>
+  <p class="callout">Our have a full bar that includes one of the largest selections of brews one can imagine.</p><br>
+  <div class="special">
+    <h2>Brunch</h2>
+    <p><i>11:00am-3:00pm All Week</i></p>
+    <p>15 bottomless mimosas and Bloody Marys</p>
+  </div>
+  <div class="special">
+    <h2>Happy Hour</h2>
+    <p><i>5:00pm-7:00pm All Week</i></p>
+    <p>$5 Select Draft Pints & Champagne Cocktails, $6 Featured Sparkling, Red, & White Wines, $7 Sobieski Vodka Martinis, $8 Mojitos, & Discounted Bites, appetizers.</p>
+  </div>
+  <div class="special">
+    <h2>Dinner</h2>
+    <p><i>7:00pm-10:00pm Fridays Only</i></p>
+    <p>Half off select wines and brew. Half off all appetizers.</p>
+  </div>
+</div>
+</div>

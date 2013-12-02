@@ -19,7 +19,11 @@
                 <div class="menuitem", id="<%= dish.id %>">
                   <h3><%= dish.dish_name %></h3>
                   <p><%= dish.description %></p>
+                  <% if dish.cents < 10 %>
+                  <p class="price"><%= "$#{dish.dollars}.0#{dish.cents}" %></p>
+                  <% else %>
                   <p class="price"><%= "$#{dish.dollars}.#{dish.cents}" %></p>
+                  <% end %>
                   <p class="calories"><%= dish.inventory %></p>
                   <% if current_user && policy(dish).update? %>
                     <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, dish), id: "edit_link_#{dish.id}", remote: true %>

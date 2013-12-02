@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "ItemEdit" do
 
-  scenario "Restaurant: When signed in, I can submit form data to edit an item", js: true do
+  scenario "Restaurant: When signed in, I can submit form data to edit an item" do
 
     # Given that I'm the signed in owner of a restaurant and have complete form data
     sign_in_restaurant_owner

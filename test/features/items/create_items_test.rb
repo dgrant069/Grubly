@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "Menu Item Creation" do
 
-  scenario "Restaurant: When signed in, I can submit form data to create a menu item", js: true do
+  scenario "Restaurant: When signed in, I can submit form data to create a menu item" do
 
     # Given that I'm signed in and have complete form data
     sign_in_restaurant_owner

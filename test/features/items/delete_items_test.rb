@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "Restaurants can only delete their menu items" do
 
-  scenario "Restaurant: I can delete any of my menu items", js: true do
+  scenario "Restaurant: I can delete any of my menu items" do
 
     @dish1 = items(:dish1).id
     @dish2 = items(:dish2).id

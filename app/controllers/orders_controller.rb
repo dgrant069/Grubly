@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
     authorize @order
 
     if @order.save
+      # @order.inventory_check(@order, @restaurant)
       current_user.orders << @order
       respond_to do |format|
         format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully created.' }

@@ -243,7 +243,7 @@ h2 {
 }
 
 .dark p {
-  color:#F1E7D0;
+  color:#C3BC9A;
 }
 
 p.events {
@@ -387,15 +387,34 @@ a.button {
 
 .dark {
   background-color: #000;
+  margin-bottom: 20px;
 }
 
+.beige .special h2{
+  color: #000000;
+}
+
+.beige .special p{
+  color: #333333;
+}
 .gray {
   background-color: #9B9788;
+  padding-bottom: 20px;
+}
+
+.gray a{
+  color: #1D33B4;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .orange {
   background-color: #C4351D;
   background-repeat: no-repeat;
+  padding-bottom: 20px;
 }
 
 #beer {
@@ -763,4 +782,8 @@ p.callout.full {
 
 #floater.down {
   top:-34px;
+}
+
+.form {
+  margin-top: 40px;
 }

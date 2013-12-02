@@ -1,47 +1,49 @@
-<div class="content">
-  <h1>Listing All Restaurants</h1>
+<div class="contentsection beige">
+  <div class="content">
+    <h1>Listing All Restaurants</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Category</th>
-        <th>Phone number</th>
-        <th>Website</th>
-        <th>Show</th>
-        <% if current_user && policy(Restaurant).create? %>
-          <th>Edit</th>
-        <% end %>
-        <% if current_user && policy(Restaurant).create? %>
-          <th>Destroy</th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @restaurants.each do |restaurant| %>
-        <tr id="<%= dom_id(restaurant) %>">
-          <td ><%= restaurant.name %></td>
-          <td><%= restaurant.address %></td>
-          <td><%= restaurant.category %></td>
-          <td><%= restaurant.phone_number %></td>
-          <td><%= restaurant.website %></td>
-          <td><%= link_to 'Details', restaurant %></td>
-          <% if current_user && policy(restaurant).update? %>
-            <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Category</th>
+          <th>Phone number</th>
+          <th>Website</th>
+          <th>Show</th>
+          <% if current_user && policy(Restaurant).create? %>
+            <th>Edit</th>
           <% end %>
-          <% if current_user && policy(restaurant).destroy? %>
-            <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user && policy(Restaurant).create? %>
+            <th>Destroy</th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+          <tr id="<%= dom_id(restaurant) %>">
+            <td ><%= restaurant.name %></td>
+            <td><%= restaurant.address %></td>
+            <td><%= restaurant.category %></td>
+            <td><%= restaurant.phone_number %></td>
+            <td><%= restaurant.website %></td>
+            <td><%= link_to 'Details', restaurant %></td>
+            <% if current_user && policy(restaurant).update? %>
+              <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+            <% end %>
+            <% if current_user && policy(restaurant).destroy? %>
+              <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <% if current_user && policy(Restaurant).create? %>
-    <%= link_to 'New Restaurant', new_restaurant_path %>
-  <% end %>
+    <br>
+
+    <% if current_user && policy(Restaurant).create? %>
+      <%= link_to 'New Restaurant', new_restaurant_path %>
+    <% end %>
+  </div>
 </div>

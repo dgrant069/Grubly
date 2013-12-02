@@ -1,24 +1,26 @@
-<div class="content">
-<h1>User Management</h1>
+<div class="contentsection gray">
+  <div class="content">
+    <h1>User Management</h1>
 
-<table>
-  <th>Username</th>
-  <th>Email</th>
-  <th>Role</th>
+    <table>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
-    <td><%= user.role %></td>
-    <% if user.role != "admin" %>
-      <td><%= button_to 'Destroy User', user_path(user), method: :delete, confirm: "Are you sure?" %></td>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <% if user.role != "admin" %>
+          <td><%= button_to 'Destroy User', user_path(user), method: :delete, confirm: "Are you sure?" %></td>
+        <% end %>
+        <% if user.role == nil %>
+          <td><%= button_to 'Mark as Restaurant Owner', user_path(user, user: {role: "owner"}), method: :put %></td>
+        <% end %>
+      </tr>
     <% end %>
-    <% if user.role == nil %>
-      <td><%= button_to 'Mark as Restaurant Owner', user_path(user, user: {role: "owner"}), method: :put %></td>
-    <% end %>
-  </tr>
-<% end %>
 
-</table>
+    </table>
+  </div>
 </div>

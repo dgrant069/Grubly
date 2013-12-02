@@ -1,7 +1,11 @@
-<h1>Editing photo</h1>
+<div class="contentsection beige">
+  <div class="content">
+    <h1>Editing photo</h1>
 
-<% if policy(@photoable).edit_photo? %>
-  <%= render 'form' %>
-<% end %>
+    <% if policy(@photoable).edit_photo? %>
+      <%= render 'form' %>
+    <% end %>
 
-<%= link_to 'Back', @photoable %>
+    <%= link_to 'Back', @photoable %>
+  </div>
+</div>

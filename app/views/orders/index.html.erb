@@ -1,35 +1,37 @@
-<div class="content">
-<h1>Orders for <%= "#{@restaurant.name}" %></h1>
+<div class="contentsection beige">
+  <div class="content">
+    <h1>Orders for <%= "#{@restaurant.name}" %></h1>
 
-<% if (current_user && current_user.orders.any? { |order| order.restaurant_id == @restaurant.id }) || policy(@restaurant).update? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Order Number</th>
-        <th>For</th>
-        <th>Special Notes</th>
-        <th>Finalized?</th>
-        <th>Time Ordered</th>
-        <th>Details</th>
-        <th>Order Filled?</th>
-        <th>Send Receipt?</th>
-        <th>Edit Note</th>
-        <th>Destroy Order</th>
-      </tr>
-    </thead>
+    <% if (current_user && current_user.orders.any? { |order| order.restaurant_id == @restaurant.id }) || policy(@restaurant).update? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>For</th>
+            <th>Special Notes</th>
+            <th>Finalized?</th>
+            <th>Time Ordered</th>
+            <th>Details</th>
+            <th>Order Filled?</th>
+            <th>Send Receipt?</th>
+            <th>Edit Note</th>
+            <th>Destroy Order</th>
+          </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
-      <%= render @orders %>
+          <%= render @orders %>
 
-    </tbody>
-  </table>
-<% elsif current_user.nil? %>
-<p>Please <%= link_to 'sign in', new_user_session_path %> for full site functionality!</p>
-<% else %>
-<p>It looks like you don't have any orders for this restaurant yet! Would you like to <%= link_to 'build one?', new_restaurant_order_path(@restaurant) %></p>
-<% end %>
-<br>
+        </tbody>
+      </table>
+    <% elsif current_user.nil? %>
+    <p>Please <%= link_to 'sign in', new_user_session_path %> for full site functionality!</p>
+    <% else %>
+    <p>It looks like you don't have any orders for this restaurant yet! Would you like to <%= link_to 'build one?', new_restaurant_order_path(@restaurant) %></p>
+    <% end %>
+    <br>
 
-<%= link_to 'Back to Restaurant', restaurant_path(@restaurant) %><br>
+    <%= link_to 'Back to Restaurant', restaurant_path(@restaurant) %><br>
+  </div>
 </div>

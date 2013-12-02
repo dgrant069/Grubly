@@ -1,74 +1,78 @@
-<div class="content">
-<h1><%= @restaurant.name %></h1>
-<p id="notice"><%= notice %></p>
+<div class="contentsection gray">
+  <div class="content">
+    <h1><%= @restaurant.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @restaurant.name %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+    </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @restaurant.category %>
-</p>
+    <p>
+      <strong>Category:</strong>
+      <%= @restaurant.category %>
+    </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @restaurant.phone_number %>
-</p>
+    <p>
+      <strong>Phone number:</strong>
+      <%= @restaurant.phone_number %>
+    </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @restaurant.website %>
-</p>
+    <p>
+      <strong>Website:</strong>
+      <%= @restaurant.website %>
+    </p>
 
-<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.latitude %>,<%= @restaurant.longitude %>&zoom=16&size=300x300&markers=color:green|<%= @restaurant.latitude %>, <%= @restaurant.longitude %>&maptype=roadmap&sensor=false">
+    <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.latitude %>,<%= @restaurant.longitude %>&zoom=16&size=300x300&markers=color:green|<%= @restaurant.latitude %>, <%= @restaurant.longitude %>&maptype=roadmap&sensor=false">
 
-<% @restaurant.photos.each do |photo| %>
-  <%= image_tag photo.photo.url(:medium) %><br>
-  <% if current_user && policy(@restaurant).update? %>
-    <%= link_to 'Edit Photo', edit_restaurant_photo_path(@restaurant, photo) %><br>
-    <%= link_to 'Destroy Photo', restaurant_photo_path(@restaurant, photo), method: :delete, data: { confirm: 'Are you sure?' } %><br>
-  <% end %>
-<% end %><br>
+    <% @restaurant.photos.each do |photo| %>
+      <%= image_tag photo.photo.url(:medium) %><br>
+      <% if current_user && policy(@restaurant).update? %>
+        <%= link_to 'Edit Photo', edit_restaurant_photo_path(@restaurant, photo) %><br>
+        <%= link_to 'Destroy Photo', restaurant_photo_path(@restaurant, photo), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+    <% end %><br>
 
 
-<% if current_user %>
-  <br><br><strong><%= link_to 'View Our Menu', new_restaurant_order_path(@restaurant) %></strong><br>
-  <strong><%= link_to 'Order History', restaurant_orders_path(@restaurant) %></strong><br><br>
-<% else %>
-  <br><br><p><%= link_to 'Sign in', new_user_session_path %> to view the menu and place an order!</p><br><br>
-<% end %>
+    <% if current_user %>
+      <br><br><strong><%= link_to 'View Our Menu', new_restaurant_order_path(@restaurant) %></strong><br>
+      <strong><%= link_to 'Order History', restaurant_orders_path(@restaurant) %></strong><br><br>
+    <% else %>
+      <br><br><p><%= link_to 'Sign in', new_user_session_path %> to view the menu and place an order!</p><br><br>
+    <% end %>
 
-<% if current_user && policy(@restaurant).update? %>
-  <%= link_to 'Add a Photo', new_restaurant_photo_path(@restaurant) %><br>
-  <%= link_to 'Add Items to Menu', restaurant_items_path(@restaurant) %><br><br>
-  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<% end %>
-<%= link_to 'Back', restaurants_path %><br>
-
-<div class="left">
-  <h1>Specials</h1>
-  <p class="callout">Our have a full bar that includes one of the largest selections of brews one can imagine.</p><br>
-  <div class="special">
-    <h2>Brunch</h2>
-    <p><i>11:00am-3:00pm All Week</i></p>
-    <p>15 bottomless mimosas and Bloody Marys</p>
-  </div>
-  <div class="special">
-    <h2>Happy Hour</h2>
-    <p><i>5:00pm-7:00pm All Week</i></p>
-    <p>$5 Select Draft Pints & Champagne Cocktails, $6 Featured Sparkling, Red, & White Wines, $7 Sobieski Vodka Martinis, $8 Mojitos, & Discounted Bites, appetizers.</p>
-  </div>
-  <div class="special">
-    <h2>Dinner</h2>
-    <p><i>7:00pm-10:00pm Fridays Only</i></p>
-    <p>Half off select wines and brew. Half off all appetizers.</p>
+    <% if current_user && policy(@restaurant).update? %>
+      <%= link_to 'Add a Photo', new_restaurant_photo_path(@restaurant) %><br>
+      <%= link_to 'Add Items to Menu', restaurant_items_path(@restaurant) %><br><br>
+      <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+    <% end %>
+    <%= link_to 'Back', restaurants_path %><br>
   </div>
 </div>
+<div class="contentsection beige">
+  <div class="content">
+    <div class="left">
+      <h1>Specials</h1>
+      <p class="callout">Our have a full bar that includes one of the largest selections of brews one can imagine.</p><br>
+      <div class="special">
+        <h2>Brunch</h2>
+        <p><i>11:00am-3:00pm All Week</i></p>
+        <p>15 bottomless mimosas and Bloody Marys</p>
+      </div>
+      <div class="special">
+        <h2>Happy Hour</h2>
+        <p><i>5:00pm-7:00pm All Week</i></p>
+        <p>$5 Select Draft Pints & Champagne Cocktails, $6 Featured Sparkling, Red, & White Wines, $7 Sobieski Vodka Martinis, $8 Mojitos, & Discounted Bites, appetizers.</p>
+      </div>
+      <div class="special">
+        <h2>Dinner</h2>
+        <p><i>7:00pm-10:00pm Fridays Only</i></p>
+        <p>Half off select wines and brew. Half off all appetizers.</p>
+      </div>
+    </div>
+  </div>
 </div>

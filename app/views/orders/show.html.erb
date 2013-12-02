@@ -1,59 +1,62 @@
-<div class="content">
-<p id="notice"><%= notice %></p>
+<div class="contentsection beige">
+  <div class="content">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order Number:</strong>
-  <%= @order.id %>
-</p>
+    <p>
+      <strong>Order Number:</strong>
+      <%= @order.id %>
+    </p>
 
-<p>
-  <strong>Different Items:</strong>
-  <%= @order.items.count %>
-</p>
+    <p>
+      <strong>Different Items:</strong>
+      <%= @order.items.count %>
+    </p>
 
-<p>
-  <strong>Special Notes:</strong>
-  <%= @order.note %>
-</p>
+    <p>
+      <strong>Special Notes:</strong>
+      <%= @order.note %>
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Dish name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Dish name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
 
 
-  <tbody>
-    <% @order.ordered_items.each do |item| %>
-      <tr>
-        <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
-        <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
-        <td><%= item.quantity %></td>
-        <% if current_user && @order.finalize? == false || policy(@order).edit_after_final? %>
-          <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %>
-          <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %>
+      <tbody>
+        <% @order.ordered_items.each do |item| %>
+          <tr>
+            <td><%= @restaurant.items.find(item.item_id).dish_name %></td>
+            <td><%= "#{@restaurant.items.find(item.item_id).dollars}.#{@restaurant.items.find(item.item_id).cents}" %></td>
+            <td><%= item.quantity %></td>
+            <% if current_user && @order.finalize? == false || policy(@order).edit_after_final? %>
+              <td><%= link_to 'Edit Item', edit_restaurant_order_ordered_item_path(@restaurant, @order, item) %></td>
+              <td><%= link_to 'Remove Item', restaurant_order_ordered_item_path(@restaurant, @order, item), method: :delete %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
+      </tbody>
+    </table>
+
+    <br><br><br>
+
+    <% if current_user && @order.finalize? %>
+      <%= "Your order has already been finalized!" %><br><br>
+    <% elsif current_user && (@order.ordered_items.count > 0) && policy(@order).finalize? %>
+      <%= button_to 'Finalize Order', restaurant_order_path(@restaurant, @order, order: {finalize: true}), method: :put %><br>
     <% end %>
-  </tbody>
-</table>
 
-<br><br><br>
-
-<% if current_user && @order.finalize? %>
-  <%= "Your order has already been finalized!" %><br><br>
-<% elsif current_user && (@order.ordered_items.count > 0) && policy(@order).finalize? %>
-  <%= button_to 'Finalize Order', restaurant_order_path(@restaurant, @order, order: {finalize: true}), method: :put %><br>
-<% end %>
-
-<% if current_user && @order.finalize? == false  && policy(@order).show? %>
-  <%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
-<% end %>
-<% if current_user && policy(@order).update? %>
-  <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
-<% end %>
-<%= link_to 'Back', restaurant_orders_path %>
+    <% if current_user && @order.finalize? == false  && policy(@order).show? %>
+      <%= link_to 'Add to Order', new_restaurant_order_ordered_item_path(@restaurant, @order, @ordered_item) %><br>
+    <% end %>
+    <% if current_user && policy(@order).update? %>
+      <%= link_to 'Edit Order Note', edit_restaurant_order_path(@restaurant, @order) %> |
+    <% end %>
+    <%= link_to 'Back', restaurant_orders_path %>
+    </div>
+  </div>
 </div>

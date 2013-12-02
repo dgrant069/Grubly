@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     authorize @order
 
     if @order.save
-      # @order.inventory_check(@order, @restaurant)
+      @order.inventory_check(@order, @restaurant)
       current_user.orders << @order
       respond_to do |format|
         format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully created.' }
@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
     authorize @order
 
     if @order.update(order_params)
+      @order.inventory_check(@order, @restaurant)
       respond_to do |format|
         format.html { redirect_to restaurant_orders_url, notice: 'Order was successfully updated.' }
         format.js
@@ -59,6 +60,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   def destroy
     authorize @order
+    @order.inventory_check_before_deletion(@order, @restaurant)
     @order.destroy
     respond_to do |format|
       format.html { redirect_to  restaurant_orders_url, notice: 'Order was successfully destroyed.' }

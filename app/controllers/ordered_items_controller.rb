@@ -12,6 +12,7 @@ class OrderedItemsController < ApplicationController
     authorize @order
 
     if @ordered_item.save
+      @ordered_item.creation_check(@ordered_item, @restaurant)
       respond_to do |format|
         format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully added.' }
         format.js
@@ -22,13 +23,16 @@ class OrderedItemsController < ApplicationController
   end
 
   def edit
+    @old_quantity = @ordered_item.quantity
     authorize @order
   end
 
   def update
+    @old_quantity = @ordered_item.quantity
     authorize @order
 
     if @ordered_item.update(ordered_item_params)
+      @ordered_item.inventory_check(@ordered_item, @restaurant, @old_quantity)
       respond_to do |format|
         format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order was successfully updated.' }
         format.js
@@ -40,6 +44,7 @@ class OrderedItemsController < ApplicationController
 
   def destroy
     authorize @order
+    @ordered_item.deletion_check(@ordered_item, @restaurant)
     @ordered_item.destroy
     respond_to do |format|
       format.html { redirect_to restaurant_order_path(@restaurant, @order), notice: 'Order item was successfully destroyed.' }

@@ -4,15 +4,15 @@
       <%= link_to image_tag('../grubly_logo_40.png'), root_path %>
     </div>
     <ul>
-      <li><%= link_to "Restaurants", restaurants_path %></li>
       <% if policy(User).index? %>
         <li><%= link_to 'Admin Page', users_path %>
-        <% if current_user %>
-          <li><%= link_to "#{current_user.username}", user_path(current_user) %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Login", id="login", remote: true %></li>
-        <% end %>
+      <% end %>
+      <li><%= link_to "Restaurants", restaurants_path %></li>
+      <% if current_user %>
+        <li><%= link_to "#{current_user.username}", user_path(current_user) %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Login", id="login", remote: true %></li>
       <% end %>
     </ul>
   </div>

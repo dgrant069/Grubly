@@ -6,20 +6,6 @@ var modal = (function(){
     $content,
     $close;
 
-    // Append the HTML
-    $overlay = $('<div id="overlay"></div>');
-    $modal = $('<div id="modal"></div>');
-    $content = $('<div id="content"></div>');
-    $close = $('<a id="close" href="#">close</a>');
-
-    $modal.hide();
-    $overlay.hide();
-    $modal.append($content, $close);
-
-    $(document).ready(function(){
-        $('body').append($overlay, $modal);
-    });
-
     // Center the modal in the viewport
     method.center = function () {
         var top, left;
@@ -40,12 +26,10 @@ var modal = (function(){
         $modal.css({
             width: settings.width || 'auto',
             height: settings.height || 'auto'
-        })
+        });
 
         method.center();
-
         $(window).bind('resize.modal', method.center);
-
         $modal.show();
         $overlay.show();
     };
@@ -58,6 +42,20 @@ var modal = (function(){
         $(window).unbind('resize.modal');
     };
 
+    // Generate the HTML and add it to the document
+    $overlay = $('<div id="overlay"></div>');
+    $modal = $('<div id="modal"></div>');
+    $content = $('<div id="content"></div>');
+    $close = $('<a id="close" href="#">close</a>');
+
+    $modal.hide();
+    $overlay.hide();
+    $modal.append($content, $close);
+
+    $(document).ready(function(){
+        $('body').append($overlay, $modal);
+    });
+
     $close.click(function(e){
         e.preventDefault();
         method.close();
@@ -65,3 +63,16 @@ var modal = (function(){
 
     return method;
 }());
+
+// Wait until the DOM has loaded before querying the document
+$(document).ready(function(){
+
+    $.get('ajax.html', function(data){
+        modal.open({content: data});
+    });
+
+    $('a#howdy').click(function(e){
+        modal.open({content: "Hows it going?"});
+        e.preventDefault();
+    });
+});

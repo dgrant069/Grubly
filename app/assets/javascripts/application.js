@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery.modal
 //= require browser_timezone_rails/application.js
 //= require foundation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+$.modal.defaults.zIndex = 99

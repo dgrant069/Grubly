@@ -16,6 +16,8 @@ gem 'simple_form'
 gem 'draper'
 gem 'postmark-rails'
 gem 'geocoder'
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
 
 group :development, :test do
   gem "minitest-rails"

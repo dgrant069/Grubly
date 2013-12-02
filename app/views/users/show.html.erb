@@ -17,13 +17,18 @@
 
 <% if @user.provider? %>
   <h3><%= @user.social_provider %></h3>
-  <p><%= @user.social_link %></p>
+  <p><%= link_to "#{@user.social_link}", "http://#{@user.social_provider}.com/#{@user.social_link}" %></p>
 <% end %>
 
 <h3>Bio</h3>
-<p><%= @user.bio %></p>
+<p><%= @user.bio %></p><br><br>
+<% if policy(@user).edit? %>
+  <%= link_to 'Update My Email and Bio!', edit_user_path %><br><br>
+<% end %>
 
-<h6>Here are all your orders for review!</h6>
+<% if @user.orders.any? %>
+
+<h6>Here are all your orders for review!</h6><br>
 
 <table>
   <th>Number</th>
@@ -42,4 +47,8 @@
   <% end %>
 
 </table>
+
+<% else %>
+  <h3>Get started with Grubly to see your previous orders here!</h3>
+<% end %>
 </div>

@@ -58,13 +58,13 @@ class UserDecorator < Draper::Decorator
 
   def social_link
     handle_none model.username do
-      site_link model.username, "http://#{model.provider}.com/#{model.twitter_name}"
+      model.username#, "http://#{model.provider}.com/#{model.username}"
     end
   end
 
   def bio
     handle_none model.bio do
-      markdown(model.bio)
+      model.bio
     end
   end
 

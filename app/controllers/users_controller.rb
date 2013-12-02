@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to users_path
+    @user = User.find(params[:id])
+    authorize @user
   end
 
   def update
@@ -28,9 +29,9 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(user_params)
-      redirect_to users_path, notice: "User was successfully marked as owner"
+      redirect_to user_path(@user), notice: "User was successfully updated."
     else
-      redirect_to users_path, notice: "Action failed"
+      redirect_to user_path(@user), notice: "Action failed"
     end
   end
 
@@ -45,6 +46,6 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :bio, :email)
   end
 end

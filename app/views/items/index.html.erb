@@ -26,7 +26,7 @@
                   <% end %>
                   <p class="calories"><%= dish.inventory %></p>
                   <% if current_user && policy(dish).update? %>
-                    <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, dish), id: "edit_link_#{dish.id}", remote: true %>
+                    <%= link_to 'Edit', edit_restaurant_item_path(@restaurant, dish), id: "edit_link_#{dish.id}" %>
                   <% end %>
                   <% if current_user && policy(dish).destroy? %>
                     <%= link_to 'Destroy', restaurant_item_path(@restaurant, dish), id: "delete_link_#{dish.id}", method: :delete, data: { confirm: 'Are you sure?', remote: true } %>

@@ -1,0 +1,10 @@
+<%= simple_form_for [@restaurant, @item] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :dish_name %>
+  <%= f.input :description %>
+  <%= f.input :dollars %>
+  <%= f.input :cents %>
+  <%= f.input :subcategory, label: "Menu Group", hint: "Appetizers, Drinks, Etc" %>
+  <%= f.input :inventory %>
+  <%= f.button :submit %>
+<% end %>

@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    sleep 1
     @items = @restaurant.items.all
     @items_by_category = @items.group_by{ |t| t.subcategory }
   end

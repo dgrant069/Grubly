@@ -27,4 +27,4 @@ Vulnerabilities
 
 None reported from Brakeman!
 
-![Screencap](/public/images/brakemanreport.png "Screencap of Brakeman Report")
+![Screencap](/public/images/brakeman.png "Screencap of Brakeman Report")

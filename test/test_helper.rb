@@ -22,13 +22,11 @@ class ActionDispatch::IntegrationTest
 end
 
 def create_order
+  sign_in_consumer
   visit new_restaurant_order_path(restaurants(:restaurant1).id)
-  click_on "Create Order"
-  click_on "Show"
-  click_on "Add to Order"
   select(items(:dish1).dish_name)
   fill_in "Quantity", with: "2"
-  click_on "Create Ordered item"
+  click_on "Create Order"
 end
 
 def sign_in_restaurant_owner(role = "owner")

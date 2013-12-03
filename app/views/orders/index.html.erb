@@ -13,7 +13,9 @@
             <th>Time Ordered</th>
             <th>Details</th>
             <th>Order Filled?</th>
+            <% if policy(@restaurant).update? %>
             <th>Send Receipt?</th>
+            <% end %>
             <th>Edit Note</th>
             <th>Destroy Order</th>
           </tr>

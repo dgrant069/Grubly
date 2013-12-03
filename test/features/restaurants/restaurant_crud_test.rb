@@ -46,7 +46,6 @@ feature "A restaurant owner or admin wants to CRUD a new restaurant" do
     click_on "Update Restaurant"
 
     # Then the action is successful
-    page.text.must_include "Restaurant was successfully updated."
     page.text.must_include "Whatever"
     page.text.must_include "www.imdefinitelyonfire.com"
 
@@ -67,7 +66,6 @@ feature "A restaurant owner or admin wants to CRUD a new restaurant" do
     click_on "Update Restaurant"
 
     # Then the action is successful
-    page.text.must_include "Restaurant was successfully updated."
     page.text.must_include "Whatever"
     page.text.must_include "www.imdefinitelyonfire.com"
 

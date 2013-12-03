@@ -38,7 +38,7 @@ feature "Unauthorized users can't CRUD menu actions" do
 
     # Then I see either a doesn't exist page or an unauthorized
     page.wont_have_content "Editing item"
-    page.must_have_content "Hello awesome Grubly users!" # because user got redirected to home page
+    page.must_have_content "Never Miss Your Favorite Dish" # because user got redirected to home page
   end
 
   scenario "Consumer: I can't hack around to the CRUD" do
@@ -51,7 +51,7 @@ feature "Unauthorized users can't CRUD menu actions" do
 
     # Then I see either a doesn't exist page or an unauthorized
     page.wont_have_content "Editing item"
-    page.must_have_content "Hello awesome Grubly users!" # user got redirected to home page
+    page.must_have_content "Never Miss Your Favorite Dish" # user got redirected to home page
   end
 
     scenario "Restaurants: I can't see other Restaurants CRUD actions" do

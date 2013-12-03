@@ -3,6 +3,7 @@ require "test_helper"
 feature "A consumer tries to place order and then delete it before payment" do
   scenario "The consumer can delete order" do
     # Given a consumer is signed in and visits the restaurant show page
+    sign_in_consumer
     create_order
     visit restaurant_orders_path(restaurants(:restaurant1).id)
 

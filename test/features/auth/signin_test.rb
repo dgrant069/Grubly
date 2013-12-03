@@ -34,7 +34,7 @@ feature "users can sign in" do
 
     # When they use it to sign in to Grubly
     visit root_path
-    click_on "Sign In"
+    click_on "Login"
     sign_in_twitter_user
     first(:link, "Login with Twitter").click
 

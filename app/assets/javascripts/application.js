@@ -19,4 +19,4 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-$.modal.defaults.zIndex = 99
+$.modal.defaults.zIndex = 1000

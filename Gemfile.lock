@@ -132,6 +132,7 @@ GEM
       minitest-metadata (~> 0.4)
       minitest-rails (~> 0.9.1)
     multi_json (1.8.2)
+    newrelic_rpm (3.6.9.171)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -263,6 +264,7 @@ DEPENDENCIES
   minitest-focus
   minitest-rails
   minitest-rails-capybara
+  newrelic_rpm
   omniauth-twitter
   paperclip
   pg

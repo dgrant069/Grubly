@@ -18,6 +18,7 @@ gem 'postmark-rails'
 gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem "minitest-rails"

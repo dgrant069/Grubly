@@ -1,4 +1,5 @@
 Grubly
+[![Code Climate](https://codeclimate.com/github/dgrant069/Grubly.png)](https://codeclimate.com/github/dgrant069/Grubly)
 ======
 Copyright © 2013 Dylan Grant & Nicholas Case
 
